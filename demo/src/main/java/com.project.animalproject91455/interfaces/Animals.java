@@ -15,18 +15,14 @@ public class Animals {
     private String name;
     private LocalDate created_at;
     private String type;
-    private StatusType status= new StatusType(false);
+    private int status;
     private String category;
     private Integer owner_id;
     private double age;
     private double size;
 
 
-    public Animals(Integer id) {
-        this.id = id;
-    }
-
-    public Animals(Integer id, String name, LocalDate created_at, String type, StatusType status, String category, Integer owner_id, double age, double size) {
+    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, Integer owner_id, double age, double size) {
         this.id = id;
         this.name = name;
         this.created_at = created_at;
@@ -58,7 +54,7 @@ public class Animals {
         return type;
     }
 
-    public StatusType getStatus() {
+    public int getStatus() {
         return status;
     }
 
@@ -90,7 +86,7 @@ public class Animals {
         this.type = type;
     }
 
-    public void setStatus(StatusType status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
