@@ -15,6 +15,13 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<maven-compiler-plugin.source>8</maven-compiler-plugin.source>
+		<maven-compiler-plugin.target>8</maven-compiler-plugin.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mongodb-driver-sync.version>4.2.3</mongodb-driver-sync.version>
+		<mongodb-crypt.version>1.2.0</mongodb-crypt.version>
+		<logback-classic.version>1.2.3</logback-classic.version>
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -25,7 +32,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -37,6 +47,58 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.no-hope</groupId>
+			<artifactId>springapp</artifactId>
+			<version>0.2.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.middleware</groupId>
+			<artifactId>metrics-annotation-springaop</artifactId>
+			<version>2.0.6</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.chenhaiyangs</groupId>
+			<artifactId>ruubypay-ratelimit-bucket4j</artifactId>
+			<version>1.1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-sync</artifactId>
+			<version>${mongodb-driver-sync.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-crypt</artifactId>
+			<version>${mongodb-crypt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback-classic.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.0.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.27</version>
+		</dependency><dependency>
+		<groupId>org.postgresql</groupId>
+		<artifactId>postgresql</artifactId>
+		<scope>runtime</scope>
+	</dependency>
+
 	</dependencies>
 
 	<build>
