@@ -2,7 +2,7 @@ package com.project.animalproject91455.customer;
 
 import java.util.List;
 
-public class Customer {
+public class User {
 
     private Integer id;
     private String name;
@@ -12,7 +12,7 @@ public class Customer {
     private String username;
 
 
-    public Customer(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
+    public User(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
         this.id = id;
         this.name = name;
         this.animals = animals;

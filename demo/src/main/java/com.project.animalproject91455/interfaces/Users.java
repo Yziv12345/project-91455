@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Document
-public class Customers {
+public class Users {
 
     @Id
     private Integer id;
@@ -18,7 +18,7 @@ public class Customers {
     private String password;
     private String username;
 
-    public Customers(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
+    public Users(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
         this.id = id;
         this.name = name;
         this.animals = animals;
