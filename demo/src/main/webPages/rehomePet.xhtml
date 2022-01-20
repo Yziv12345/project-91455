@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+// Yoni: here we will need to use the Post function to add this animal to the DB
+
+<!-- index.xhtml -->
+<!-- Registration form that demonstrates various JSF components -->
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Get Rexy - The house of adoption and rehome of pets</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h1>Get Rexy - Rehome my pet</h1>
+        <p>Add your pet to our family</p>
+        <h:panelGrid columns="4" style="height: 96px; width:456px;">
+            <h:graphicImage name="fname.png" library="images" />
+            <h:inputText id="petNameInputText" />
+            <h:graphicImage name="lname.png" library="images" />
+            <h:inputText id="lastNameInputText" />
+            <h:graphicImage name="email.png" library="images" />
+            <h:inputText id="emailInputText" />
+            <h:graphicImage name="phone.png" library="images" />
+            <h:inputText id="phoneInputText" />
+        </h:panelGrid>
+        <p>
+            <br />What size is your pet?</p>
+        <h:selectOneMenu id="petSize">
+            <f:selectItem itemValue="Mini" itemLabel="Mini" />
+            <f:selectItem itemValue="Small" itemLabel="Small" />
+            <f:selectItem itemValue="Medium" itemLabel="Medium" />
+            <f:selectItem itemValue="Large" itemLabel="Large" />
+            <f:selectItem itemValue="Huge" itemLabel="Huge" />
+        </h:selectOneMenu>
+        <p>
+            <h:outputLink value="http://www.deitel.com">
+                Click here to learn more about our books
+            </h:outputLink>
+        </p>
+        <h:graphicImage name="os.png" library="images" />
+        <h:selectOneRadio id="osSelectOneRadio">
+            <f:selectItem itemValue="WinVista" itemLabel="Windows Vista" />
+            <f:selectItem itemValue="Win7" itemLabel="Windows 7" />
+            <f:selectItem itemValue="OSX" itemLabel="Mac OS X" />
+            <f:selectItem itemValue="Linux" itemLabel="Linux" />
+            <f:selectItem itemValue="Other" itemLabel="Other" />
+        </h:selectOneRadio>
+        <h:commandButton value="Rehome my pet" />
+    </h:form>
+</h:body>
+
+</html>
