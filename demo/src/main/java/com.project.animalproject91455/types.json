@@ -1,0 +1,29 @@
+{
+    "signUpMsg":{
+        "firstName": string,
+        "lastName": string,
+        "email": string,
+        "phone": number,
+        "pwassword": string,
+        "confirmPassword": string,
+    },
+    "loginMsg": {
+        "email": string,
+        "pwassword": string,
+    },
+    "oferPet": {
+        "id" : "should be generated automatically when adding to server NOT input from user",
+        "name" : string, 
+        "age" : number,
+        "size" : " xs / s / m / l / xl / xxl",
+        "catagory" : "Dogs, Cats, Fish, Birds",
+        "photo" : src,
+        "shortDescription" : string,
+        "longDescription" : string,
+    },
+    "adoptPet": {
+        "id" : number,
+    }
+}
+    
+  
