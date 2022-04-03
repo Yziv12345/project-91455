@@ -1,22 +1,32 @@
 package com.project.animalproject91455.interfaces;
 
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.time.LocalDate;
+import javax.persistence.*;
 import java.util.List;
 
-@Document
+@Entity
+@Table(name = "users", schema = "public")
 public class Users {
-
     @Id
+    @Column(name = "id", nullable = false)
     private Integer id;
+
+    @Column(name="name")
     private String name;
+    @Column(name="animals")
+    @ElementCollection(targetClass=Integer.class)
     private List<Integer> animals;
+    @Column(name="actions")
+    @ElementCollection(targetClass=Integer.class)
     private List<Integer> actions;
+    @Column(name="password")
     private String password;
-    private String username;
+    @Column(name="user_name")
+    private String userName;
+
+    public Users() {
+
+    }
 
     public Users(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
         this.id = id;
@@ -24,7 +34,7 @@ public class Users {
         this.animals = animals;
         this.actions = actions;
         this.password = password;
-        this.username = username;
+        this.userName = username;
     }
 
     public Integer getId() {
@@ -67,11 +77,11 @@ public class Users {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String username) {
+        this.userName = username;
     }
 }

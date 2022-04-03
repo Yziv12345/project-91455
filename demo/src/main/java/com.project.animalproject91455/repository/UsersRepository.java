@@ -1,8 +1,12 @@
 package com.project.animalproject91455.repository;
 
 import com.project.animalproject91455.interfaces.Users;
-import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface UsersRepository extends MongoRepository<Users, Integer>{
+import java.util.List;
+
+public interface UsersRepository extends JpaRepository<Users, Integer> {
+
+    List<Users> findByName(String userName);
 }
 
