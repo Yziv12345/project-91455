@@ -12,17 +12,14 @@ import java.util.List;
 @RequestMapping("/animals")
 public class AnimalController {
 
-
     private AnimalsRepository animalRepository;
-
 
     public AnimalController(AnimalsRepository animalRepository) {
         this.animalRepository = animalRepository;
     }
 
-
     @GetMapping("")
     public List<Animals> getAll() {
         return animalRepository.findAll();
     }
-}
+ }
