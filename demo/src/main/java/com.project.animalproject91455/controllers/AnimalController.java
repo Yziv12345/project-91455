@@ -5,6 +5,10 @@ import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.AnimalsRepository;
 import com.project.animalproject91455.repository.UsersRepository;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -66,6 +70,11 @@ public class AnimalController {
         return animal;
     }
 
+    @GetMapping("/index2")
+    String getTest(Model model) {
+        model.addAttribute("something", "this is coming from animal controller");
+        return "index1";
+    }
     @GetMapping("/getAnimalDetails")
     public Optional<Users> getAnimalDetails(@RequestParam String name) {
         Animals animal = null;
@@ -77,9 +86,6 @@ public class AnimalController {
         } catch (Exception e) {
             System.out.print(e);
         }
-
         return user;
     }
-
-
 }
