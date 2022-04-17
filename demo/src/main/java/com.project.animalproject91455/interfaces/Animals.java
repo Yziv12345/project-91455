@@ -39,6 +39,8 @@ public class Animals {
         return id;
     }
 
+    public Integer getOwner_id() {return owner_id;}
+
     public void setId(Integer id) {
         this.id = id;
     }

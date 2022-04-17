@@ -14,7 +14,7 @@ import java.time.LocalDate;
 
 @EnableMongoRepositories(basePackageClasses = AnimalsRepository.class)
 @Configuration
-public class MongoDBConfig {
+public class DBConfig {
 
     @Bean
     CommandLineRunner commandLineRunner(AnimalsRepository animalsRepository) {
