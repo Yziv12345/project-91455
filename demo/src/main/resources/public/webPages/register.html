@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Get Rexy - The home of the pets</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Custom styles for this template -->
+    <link href="static.webPages/css/springPage.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
+
+    <!-- Font Awesome (for icons) -->
+    <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-spring fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="fa fa-dog"></i>
+            Get Rexy
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+
+                <!-- if user is signed in -->
+                <li class="nav-item">
+                    <a class="nav-link" href="rehomePet.html">
+                        <i class="fas fa-house-user"></i> Re-home a pet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="searchPet.html">
+                        <i class="fas fa-cat"></i> Adopt a pet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="petProfile.html">
+                        <i class="fa fa-user"></i> Account</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-sign-out-alt"></i> Sign Out</a>
+                </li>
+
+                <!-- if user is not signed in -->
+                <li class="nav-item">
+                    <a class="nav-link" href=login.html>
+                        <i class="fa fa-sign-in-alt"></i> Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html">
+                        <i class="fa fa-user-plus"></i> Sign up</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container" align="center">
+        <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
+        <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
+        <p th:text="'Hello, ' + ${name} + '!'" />
+    </div>
+</div>
+<div class="container">
+
+    <!-- User Registration form -->
+    <form class="form-horizontal" role="form" method="POST" action="">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Welcome! Please fill this form to join to our family!</h2>
+                <p>By joining to our community you will be able to adopt pets, and find a new home for your pets</p>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input type="text" name="name" class="form-control" id="name"
+                               placeholder="Tamar Benaya" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                <!-- Put name validation error messages here -->
+                            </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="email">E-Mail Address</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input type="text" name="email" class="form-control" id="email"
+                               placeholder="you@example.com" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                <!-- Put e-mail validation error messages here -->
+                            </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="email">Phone Number</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-phone"></i></div>
+                        <input type="text" name="email" class="form-control" id="email"
+                               placeholder="+972-55-12345678" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                <!-- Put e-mail validation error messages here -->
+                            </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fas fa-key"></i></div>
+                        <input type="password" name="password" class="form-control" id="password"
+                               placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                                Example Error Message
+                            </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Confirm Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <input type="password" name="password-confirmation" class="form-control"
+                               id="password-confirm" placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i> Register</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+
+</html>

@@ -35,7 +35,7 @@ public class UsersController {
     }
 
     @GetMapping("/login")
-    public Boolean login(@RequestParam String name, @RequestParam String password) {
+    public Boolean login(@RequestParam(name="name", required=true) String name, @RequestParam(required=true) String password) {
         try {
             List<Users> users = usersRepository.findByName(name);
             Users user = null;
