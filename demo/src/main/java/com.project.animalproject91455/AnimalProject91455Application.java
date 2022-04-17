@@ -9,5 +9,4 @@ public class AnimalProject91455Application {
 	public static void main(String[] args) {
 		SpringApplication.run(AnimalProject91455Application.class, args);
 	}
-
 }

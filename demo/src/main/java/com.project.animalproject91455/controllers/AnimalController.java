@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,7 +29,6 @@ public class AnimalController {
         this.animalRepository = animalRepository;
         this.usersRepository = usersRepository;
     }
-
 
     @GetMapping("")
     public List<Animals> getAll() {
@@ -89,3 +89,4 @@ public class AnimalController {
         return user;
     }
 }
+
