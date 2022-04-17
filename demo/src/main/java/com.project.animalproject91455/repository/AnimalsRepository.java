@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AnimalsRepository extends JpaRepository<Animals, Integer> {
 
 
-
-
+    Animals findAll(String name);
 }
 
