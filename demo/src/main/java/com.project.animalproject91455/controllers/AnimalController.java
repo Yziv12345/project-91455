@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @RestController
@@ -47,7 +48,7 @@ public class AnimalController {
     public Animals getAnimal(@RequestParam String name) {
         Animals animal = null;
         try {
-            animal = animalRepository.findAll(name);
+            animal = animalRepository.findByName(name);
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -58,7 +59,7 @@ public class AnimalController {
     public Animals getAnimalByCategory(@RequestParam String category) {
         Animals animal = null;
         try {
-            animal = animalRepository.findAll(category);
+            animal = animalRepository.findByCategory(category);
         } catch (Exception e) {
             System.out.print(e);
         }
@@ -66,12 +67,12 @@ public class AnimalController {
     }
 
     @GetMapping("/getAnimalDetails")
-    public Users getAnimalDetails(@RequestParam String name) {
+    public Optional<Users> getAnimalDetails(@RequestParam String name) {
         Animals animal = null;
-        Users user = null;
+        Optional<Users> user = null;
         try {
-            animal = animalRepository.findAll(name);
-            user = usersRepository.findAll(animal.getOwner_id());
+            animal = animalRepository.findByName(name);
+            user = usersRepository.findById(animal.getOwner_id());
 
         } catch (Exception e) {
             System.out.print(e);
