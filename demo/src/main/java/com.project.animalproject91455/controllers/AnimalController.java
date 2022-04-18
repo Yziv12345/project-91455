@@ -16,8 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-@RestController
-@RequestMapping("/animals")
+@Controller
 public class AnimalController {
 
 
@@ -87,6 +86,12 @@ public class AnimalController {
             System.out.print(e);
         }
         return user;
+
+        @RequestMapping("/animals")
+        public String getAll (Model model){
+            model.addAttribute("pets", animalRepository.findAll());
+            return "animals/allPets";
+        }
     }
 }
 

@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class PersonController {
 
-    @RequestMapping("/")
+    @RequestMapping("/books")
     public String temp(Model model) {
         model.addAttribute("something", "this is coming from animal controller");
-        return "person";
+        return "books/list";
     }
 }
 
