@@ -9,10 +9,10 @@
     <title>Get Rexy - The home of the pets</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link href="static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -45,15 +45,15 @@
 
                 <!-- if user is signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href="rehomePet.html">
+                    <a class="nav-link" href="../templates/animals/rehomePet.html">
                         <i class="fas fa-house-user"></i> Re-home a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="searchPet.html">
+                    <a class="nav-link" href="../templates/animals/searchPet.html">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="petProfile.html">
+                    <a class="nav-link" href="../templates/animals/petProfile.html">
                         <i class="fa fa-user"></i> Account</a>
                 </li>
                 <li class="nav-item">
@@ -63,11 +63,11 @@
 
                 <!-- if user is not signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href=login.html>
+                    <a class="nav-link" href=../templates/users/login.html>
                         <i class="fa fa-sign-in-alt"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.html">
+                    <a class="nav-link" href="../templates/users/register.html">
                         <i class="fa fa-user-plus"></i> Sign up</a>
                 </li>
             </ul>
@@ -83,7 +83,6 @@
         <a href="" class="btn btn-success" target="_blank"><i class="fa fa-paw"></i> Adopt a pet</a>
         <a href="https://therealdanvega.teachable.com/p/spring-boot-2" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Re-home your pet</a>
         <h1 th:text="${something}"}></h1>
-        <h1 th:text="${something}"}>test</h1>
     </div>
 </div>
 

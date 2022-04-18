@@ -10,8 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/animals")
+@Controller
 public class AnimalController {
 
     private AnimalsRepository animalRepository;
@@ -20,10 +19,10 @@ public class AnimalController {
         this.animalRepository = animalRepository;
     }
 
-//    @GetMapping("")
-//    public List<Animals> getAll() {
-//        return animalRepository.findAll();
-//    }
-
+    @RequestMapping("/animals")
+    public String getAll(Model model) {
+        model.addAttribute("pets",animalRepository.findAll() );
+        return "animals/allPets";
+    }
 }
 

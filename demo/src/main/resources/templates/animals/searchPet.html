@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -12,10 +9,10 @@
     <title>Get Rexy - The home of the pets</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../public/webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link href="static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="../../public/webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -23,7 +20,7 @@
     <!-- Font Awesome (for icons) -->
     <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
 
-
+    <!--    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
 </head>
 
 <body>
@@ -31,7 +28,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-spring fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="../../public/index.html">
             <i class="fa fa-dog"></i>
             Get Rexy
         </a>
@@ -41,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">
+                    <a class="nav-link" href="../../public/index.html">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
@@ -66,11 +63,11 @@
 
                 <!-- if user is not signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href=login.html>
+                    <a class="nav-link" href=../users/login.html>
                         <i class="fa fa-sign-in-alt"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.html">
+                    <a class="nav-link" href="../users/register.html">
                         <i class="fa fa-user-plus"></i> Sign up</a>
                 </li>
             </ul>
@@ -78,55 +75,56 @@
     </div>
 </nav>
 
-
 <div class="jumbotron jumbotron-fluid">
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="'Hello, ' + ${name} + '!'" />
+        <p th:text="${something}"}></p>
     </div>
 </div>
 
-<div id="profile" class="container">
+<div class="container">
 
-    <div class="row">
-        <!-- Right Side -->
-        <div class="col-10 offset-1">
-            <div class="row">
-                <div class="card col-12">
-                    <img class="card-img-top" src="static/images/husky.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">
-<!--                            <a href="/u/therealdanvega">/u/therealdanvega</a>-->
-                        </p>
-                        <a href="rehomePet.html"><button type="button" class="btn btn-primary btn-lg btn-block">Adopt me!</button></a>
-                    </div>
-                </div>
+    <!-- search a pet -->
+    <form class="form-horizontal" role="form" method="POST" th:action="@{/login}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Let's find you the perfect pet!</h2>
+                <hr>
             </div>
-            <div class="row">
-                <div class="card col-12">
-                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-                    <div class="card-body">
-                        <h5 class="card-title"> ${name} Information</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">PetId:</h6>
-                        <p class="card-text">Age: 1 year</p>
-                        <p class="card-text">Type: Husky</p>
-                        <p class="card-text">First published in site: March 23, 2022</p>
-                        <p class="card-text">Status: ready to be adopted</p>
-                        <p class="card-text">Size: Medium </p>
-                        <p class="card-text"> Category: </p>
-                        <p class="card-text"> Owners Name: </p>
-                        <p class="card-text"> Email: </p>
-                        <p class="card-text"> Phone: </p>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="petType">Pet Type</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <select type="petType" class="form-control" id="petType" required="required" th:field="*{petType}">
+                                <option value="" disabled selected>Please select your desired pet type</option>
+                                <option value="Cat"> Cat</option>
+                                <option value="Dog"> Dog</option>
+                                <option value="Fish"> Fish</option>
+                                <option value="Rabbit"> Rabbit</option>
+                                <option value="Mouse"> Mouse</option>
+                            </select>
+                            <small th:errors="*{type}" style="color:red;"></small>
                     </div>
                 </div>
             </div>
         </div>
-
-    </div> <!-- // row -->
+        <div class="row" style="padding-top: 1rem">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success"><i class="fas fa-paw"></i> Find me a pet!</button>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </form>
 
 </div>
 
 </body>
-
 </html>
