@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -12,10 +9,10 @@
     <title>Get Rexy - The home of the pets</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../public/webPages/libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link href="../../public/webPages/static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="../../webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -23,7 +20,7 @@
     <!-- Font Awesome (for icons) -->
     <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
 
-
+    <!--    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
 </head>
 
 <body>
@@ -31,7 +28,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-spring fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="../../public/index.html">
+        <a class="navbar-brand" href="index.html">
             <i class="fa fa-dog"></i>
             Get Rexy
         </a>
@@ -41,22 +38,22 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../public/index.html">
+                    <a class="nav-link" href="index.html">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
 
                 <!-- if user is signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href="rehomePet.html">
+                    <a class="nav-link" href="../templates/animals/rehome.html">
                         <i class="fas fa-house-user"></i> Re-home a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="searchPet.html">
+                    <a class="nav-link" href="../templates/animals/searchPet.html">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="petProfile.html">
+                    <a class="nav-link" href="../templates/animals/petProfile.html">
                         <i class="fa fa-user"></i> Account</a>
                 </li>
                 <li class="nav-item">
@@ -66,11 +63,11 @@
 
                 <!-- if user is not signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href=../users/login.html>
+                    <a class="nav-link" href=../templates/users/login.html>
                         <i class="fa fa-sign-in-alt"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../users/register.html">
+                    <a class="nav-link" href="../users">
                         <i class="fa fa-user-plus"></i> Sign up</a>
                 </li>
             </ul>
@@ -82,7 +79,6 @@
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="'Hello, ' + ${name} + '!'" />
     </div>
 </div>
 
@@ -93,16 +89,15 @@
             <h4>Re-home your pet</h4>
             <h5> Add your pet to our family</h5>
             <br/>
-            <form method="POST" th:action="@{/submit-link}" th:object="${link}">
+            <form method="POST" >
                 <div class="form-group">
                     <label for="title">Pet's Name</label>
                     <input type="text"
                            class="form-control"
                            id="title"
                            placeholder="Enter Title"
-                           required="required"
-                           th:field="*{title}">
-                    <small th:errors="*{title}" style="color:red;"></small>
+                           required="required">
+                    <small style="color:red;"></small>
                 </div>
                 <div class="form-group">
                     <label for="title">Age</label>
@@ -110,13 +105,12 @@
                            class="form-control"
                            id="age"
                            placeholder="Enter Title"
-                           required="required"
-                           th:field="*{age}">
-                    <small th:errors="*{age}" style="color:red;"></small>
+                           required="required">
+                    <small style="color:red;"></small>
                 </div>
                 <div class="form-group">
                     <label for="title">Type</label>
-                    <select type="petSize" class="form-control" id="petType" placeholder="Pet size" required="required" th:field="*{petSize}">
+                    <select type="petSize" class="form-control" id="petType" placeholder="Pet size" required="required">
                         <option value="" disabled selected>Please select your pet type</option>
                         <option value="Cat"> Cat</option>
                         <option value="Dog"> Dog</option>
@@ -124,11 +118,11 @@
                         <option value="Rabbit"> Rabbit</option>
                         <option value="Mouse"> Mouse</option>
                     </select>
-                    <small th:errors="*{type}" style="color:red;"></small>
+                    <small style="color:red;"></small>
                 </div>
                 <div class="form-group">
                     <label for="petSize">What size is your pet?</label>
-                    <select type="petSize" class="form-control" id="petSize" placeholder="Pet size" required="required" th:field="*{petSize}">
+                    <select type="petSize" class="form-control" id="petSize" placeholder="Pet size" required="required">
                         <option value="" disabled selected>Please select your pet size</option>
                         <option value="Mini"> Mini</option>
                         <option value="Small"> Small</option>
@@ -136,15 +130,15 @@
                         <option value="Large"> Large</option>
                         <option value="Huge"> Huge</option>
                     </select>
-                        <small th:errors="*{petSize}" style="color:red;"></small>
+                        <small style="color:red;"></small>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="shortDescription" rows="3" th:field="*{shortDescription}">Please add a short description here</textarea>
+                    <label for="longDescription">Description</label>
+                    <textarea class="form-control" id="shortDescription" rows="3" >Please add a short description here</textarea>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="longDescription" rows="3" th:field="*{shortDescription}">Please add a long description here</textarea>
+                    <label for="longDescription">Description</label>
+                    <textarea class="form-control" id="longDescription" rows="3">Please add a long description here</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Re-home my pet <i class="fas fa-paw"></i></button>
             </form>

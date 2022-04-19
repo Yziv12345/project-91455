@@ -6,19 +6,24 @@ public class User {
 
     private Integer id;
     private String name;
+    private String email;
+    private String phoneNumber;
     private List<Integer> animals;
     private List<Integer> actions;
     private String password;
-    private String username;
+    private String userName;
 
 
-    public User(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
+    public User(Integer id, String name, String email, String phoneNumber, List<Integer> animals, List<Integer> actions, String password, String username) {
         this.id = id;
         this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.animals = animals;
         this.actions = actions;
         this.password = password;
-        this.username = username;
+        this.userName = username;
+
     }
 
     public Integer getId() {
@@ -36,6 +41,20 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
 
     public List<Integer> getAnimals() {
         return animals;
@@ -61,11 +80,16 @@ public class User {
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String username) {
+        this.userName = username;
+    }
+
+    @Override
+    public String toString(){
+        return "User [name=" + name + ", userName=" +userName +"]";
     }
 }

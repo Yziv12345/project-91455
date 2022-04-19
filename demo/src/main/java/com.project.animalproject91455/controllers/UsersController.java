@@ -1,17 +1,19 @@
 package com.project.animalproject91455.controllers;
 
 
+import com.project.animalproject91455.customer.User;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.UsersRepository;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-@RestController
-@RequestMapping("/users")
+@Controller
 public class UsersController {
 
     private UsersRepository usersRepository;
@@ -20,18 +22,48 @@ public class UsersController {
         this.usersRepository = usersRepository;
     }
 
+    @GetMapping("/users/register")
+    public String registerUser(){
+        return "users/register";
+    }
 
-    @PostMapping("/register")
-    public Users registerUser(@RequestParam String name, @RequestParam String userName, @RequestParam String password) {
+    @GetMapping("/users/userProfile")
+    public String seeUserProfile(){
+        return "users/userProfile";
+    }
+
+    @GetMapping("/users/loggedInUser")
+    public String loggedInUserPage(){
+        return "users/loggedInUser";
+    }
+
+    //    @PostMapping("/register")
+//    public Users registerUser(@RequestParam String name, @RequestParam String userName, @RequestParam String password) {
+//        Random ran = new Random();
+//        int rand_1 = ran.nextInt(6) + 5;
+//        Users newUser = new Users(rand_1, name, new ArrayList<>(), new ArrayList<>(), password, userName);
+//        try {
+//            return usersRepository.save(newUser);
+//        } catch (Exception e) {
+//            System.out.print(e);
+//        }
+//        return newUser;
+//    }
+    @PostMapping("/saveUser")
+    public ModelAndView save(@ModelAttribute User user) {
+        System.out.println("userName from UI = " + user);
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Users newUser = new Users(rand_1, name, new ArrayList<>(), new ArrayList<>(), password, userName);
-        try {
-            return usersRepository.save(newUser);
-        } catch (Exception e) {
-            System.out.print(e);
-        }
-        return newUser;
+//        Users newUser = new Users(rand_1, user.getName(), new ArrayList<>(), new ArrayList<>(), user.getUsername(), user.getPassword());
+//        try {
+//            usersRepository.save(newUser);
+//        } catch (Exception e) {
+//            System.out.print(e);
+//        }
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("users/loggedInUser");
+        modelAndView.addObject("user", user);
+        return modelAndView;
     }
 
     @GetMapping("/login")

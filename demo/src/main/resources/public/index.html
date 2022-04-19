@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,7 +20,6 @@
     <!-- Font Awesome (for icons) -->
     <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
 
-<!--    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>-->
 </head>
 
 <body>
@@ -42,32 +41,20 @@
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
-
-                <!-- if user is signed in -->
-                <li class="nav-item">
-                    <a class="nav-link" href="../templates/animals/rehomePet.html">
-                        <i class="fas fa-house-user"></i> Re-home a pet</a>
-                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="../templates/animals/rehome.html">-->
+<!--                        <i class="fas fa-house-user"></i> Re-home a pet</a>-->
+<!--                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="../templates/animals/searchPet.html">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../templates/animals/petProfile.html">
-                        <i class="fa fa-user"></i> Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out-alt"></i> Sign Out</a>
-                </li>
-
-                <!-- if user is not signed in -->
-                <li class="nav-item">
                     <a class="nav-link" href=../templates/users/login.html>
                         <i class="fa fa-sign-in-alt"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../templates/users/register.html">
+                    <a class="nav-link" href="/users/register">
                         <i class="fa fa-user-plus"></i> Sign up</a>
                 </li>
             </ul>
@@ -80,9 +67,8 @@
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <a href="" class="btn btn-success" target="_blank"><i class="fa fa-paw"></i> Adopt a pet</a>
-        <a href="https://therealdanvega.teachable.com/p/spring-boot-2" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Re-home your pet</a>
-        <h1 th:text="${something}"}></h1>
+        <a href="/animals/searchPet" class="btn btn-success" target="_blank"><i class="fa fa-paw"></i> Adopt a pet</a>
+        <a href="/animals/rehome" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Re-home your pet</a>
     </div>
 </div>
 

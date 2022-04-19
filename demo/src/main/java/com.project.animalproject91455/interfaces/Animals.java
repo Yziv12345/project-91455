@@ -1,11 +1,9 @@
 package com.project.animalproject91455.interfaces;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
-
 
 @Entity
 @Table(name = "animals")
@@ -44,7 +42,6 @@ public class Animals {
     public void setId(Integer id) {
         this.id = id;
     }
-
 
     public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, Integer owner_id, double age, double size) {
         this.id = id;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,10 +9,10 @@
     <title>Get Rexy - The home of the pets</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../public/webPages/libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link href="../../public/webPages/static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="../../webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -45,7 +45,7 @@
 
                 <!-- if user is signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href="rehomePet.html">
+                    <a class="nav-link" href="rehome.html">
                         <i class="fas fa-house-user"></i> Re-home a pet</a>
                 </li>
                 <li class="nav-item">
@@ -86,7 +86,7 @@
 <div class="container">
 
     <!-- search a pet -->
-    <form class="form-horizontal" role="form" method="POST" th:action="@{/login}">
+    <form class="form-horizontal" role="form" method="POST" th:action="searchPetByCategory">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -102,7 +102,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <select type="petType" class="form-control" id="petType" required="required" th:field="*{petType}">
+                            <select type="petType" class="form-control" id="petType" required="required">
                                 <option value="" disabled selected>Please select your desired pet type</option>
                                 <option value="Cat"> Cat</option>
                                 <option value="Dog"> Dog</option>
@@ -110,7 +110,7 @@
                                 <option value="Rabbit"> Rabbit</option>
                                 <option value="Mouse"> Mouse</option>
                             </select>
-                            <small th:errors="*{type}" style="color:red;"></small>
+                            <small style="color:red;"></small>
                     </div>
                 </div>
             </div>

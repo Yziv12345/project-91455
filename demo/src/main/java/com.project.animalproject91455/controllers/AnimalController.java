@@ -4,6 +4,7 @@ import com.project.animalproject91455.interfaces.Animals;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.AnimalsRepository;
 import com.project.animalproject91455.repository.UsersRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +13,20 @@ import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
 @Controller
+@RequestMapping("/animals")
 public class AnimalController {
 
+    @Autowired
+    AnimalsRepository animalRepository;
 
-    private AnimalsRepository animalRepository;
-    private UsersRepository usersRepository;
+    @Autowired
+    UsersRepository usersRepository;
 
 
     public AnimalController(AnimalsRepository animalRepository, UsersRepository usersRepository) {
@@ -29,9 +34,38 @@ public class AnimalController {
         this.usersRepository = usersRepository;
     }
 
-    @GetMapping("")
+    @GetMapping("/allPets")
     public List<Animals> getAll() {
+        List<Animals> animalsList = animalRepository.findAll();
+        System.out.println("animalsList"+animalsList);
+        System.out.println("animalRepository.findAll()"+animalRepository.findAll());
         return animalRepository.findAll();
+    }
+
+    @GetMapping("/searchPetByCategory/{category}")
+    public String searchPetByCategory(@PathVariable String category){
+//        List<Animals> animalsList = (List<Animals>) animalRepository.findByCategory(category);
+//        System.out.println("animalsList "+animalsList);
+        System.out.println("animalRepository.findByCategory(category) "+animalRepository.findByCategory(category));
+        animalRepository.findByCategory(category);
+        return "animals/searchPetByCategory";
+    }
+
+//    @GetMappingetMapping("/animals")
+//    public String getAll(Model model){
+//        model.addAttribute("pets", animalRepository.findAll());
+//        System.out.println("animalRepository.findAll(): " + animalRepository.findAll());
+//        return "animals/allPets";
+//    }
+
+    @GetMapping("/animals/searchPet")
+    public String searchPet(){
+        return "animals/searchPet";
+    }
+
+    @GetMapping("/animals/rehome")
+    public String rehomePetPage(){
+        return "animals/rehome";
     }
 
     @PostMapping("/register")
@@ -47,16 +81,16 @@ public class AnimalController {
         return newAnimal;
     }
 
-    @GetMapping("/get")
-    public Animals getAnimal(@RequestParam String name) {
-        Animals animal = null;
-        try {
-            animal = animalRepository.findByName(name);
-        } catch (Exception e) {
-            System.out.print(e);
-        }
-        return animal;
-    }
+//    @GetMapping("/animals")
+//    public Animals getAnimal(@RequestParam String name) {
+//        Animals animal = null;
+//        try {
+//            animal = animalRepository.findByName(name);
+//        } catch (Exception e) {
+//            System.out.print(e);
+//        }
+//        return animal;
+//    }
 
     @GetMapping("/getByCategory")
     public Animals getAnimalByCategory(@RequestParam String category) {
@@ -74,6 +108,7 @@ public class AnimalController {
         model.addAttribute("something", "this is coming from animal controller");
         return "index1";
     }
+
     @GetMapping("/getAnimalDetails")
     public Optional<Users> getAnimalDetails(@RequestParam String name) {
         Animals animal = null;
@@ -86,12 +121,6 @@ public class AnimalController {
             System.out.print(e);
         }
         return user;
-
-        @RequestMapping("/animals")
-        public String getAll (Model model){
-            model.addAttribute("pets", animalRepository.findAll());
-            return "animals/allPets";
-        }
     }
 }
 
