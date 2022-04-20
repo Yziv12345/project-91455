@@ -14,14 +14,50 @@ public class Animals {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "created_at", nullable = false)
     private LocalDate created_at;
+    @Column(name = "type", nullable = false)
     private String type;
+    @Column(name = "status", nullable = false)
     private int status;
+    @Column(name = "category", nullable = false)
     private String category;
+    @Column(name = "owner_id", nullable = false)
     private Integer owner_id;
+    @Column(name = "age", nullable = false)
     private double age;
+    @Column(name = "size", nullable = false)
     private double size;
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getCreated_at() {
+        return created_at;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public double getAge() {
+        return age;
+    }
+
+    public double getSize() {
+        return size;
+    }
 
     public Animals() {
         this.id = null;
@@ -34,6 +70,7 @@ public class Animals {
         this.age = 0;
         this.size = 0;
     }
+
 
     public Integer getId() {
         return id;

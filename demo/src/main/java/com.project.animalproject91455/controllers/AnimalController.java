@@ -28,7 +28,8 @@ public class AnimalController {
 
     @GetMapping("")
     public List<Animals> getAll() {
-        return animalRepository.findAll();
+        List<Animals> res = animalRepository.findAll();
+        return res;
     }
 
     @PostMapping("/register")
