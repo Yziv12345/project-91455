@@ -83,9 +83,10 @@ public class AnimalController {
         return "animals/searchPet";
     }
 
-    @GetMapping("/rehome")
-    public String getRehomePetPage(){
-        return "animals/rehome";
+    @GetMapping("")
+    public List<Animals> getAll() {
+        List<Animals> res = animalRepository.findAll();
+        return res;
     }
 
     @PostMapping("/register")
