@@ -42,32 +42,16 @@
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
-
-                <!-- if user is signed in -->
-                <li class="nav-item">
-                    <a class="nav-link" href="../templates/animals/rehomePet.html">
-                        <i class="fas fa-house-user"></i> Re-home a pet</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../templates/animals/searchPet.html">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../templates/animals/petProfile.html">
-                        <i class="fa fa-user"></i> Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out-alt"></i> Sign Out</a>
-                </li>
-
-                <!-- if user is not signed in -->
-                <li class="nav-item">
-                    <a class="nav-link" href=../templates/users/login.html>
+                    <a class="nav-link" href="/users/login">
                         <i class="fa fa-sign-in-alt"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../users">
+                    <a class="nav-link" href="/users/register">
                         <i class="fa fa-user-plus"></i> Sign up</a>
                 </li>
             </ul>
@@ -84,7 +68,7 @@
 <div class="container">
 
     <!-- User Registration form -->
-    <form class="form-horizontal" role="form" method="POST" action="saveUser">
+    <form class="form-horizontal" role="form" method="POST" action="saveUser" th:object="${newUser}">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">

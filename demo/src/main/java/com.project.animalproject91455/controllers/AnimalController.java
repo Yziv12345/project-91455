@@ -28,6 +28,21 @@ public class AnimalController {
     @Autowired
     UsersRepository usersRepository;
 
+    @GetMapping("/findAll")
+    public String findAll(Model model) {
+//        List<Animals> res = animalRepository.findAll();
+        model.addAttribute("pets",animalRepository.findAll());
+        return "animals/allPets";
+    }
+
+    @ModelAttribute("findAllList")
+    public List<Animals> findAllList() {
+        List<Animals> res = animalRepository.findAll();
+        System.out.println(res);
+        return res;
+    }
+
+
 
     public AnimalController(AnimalsRepository animalRepository, UsersRepository usersRepository) {
         this.animalRepository = animalRepository;
@@ -35,15 +50,20 @@ public class AnimalController {
     }
 
     @GetMapping("/allPets")
-    public List<Animals> getAll() {
+    public String getAll(Model model) {
         List<Animals> animalsList = animalRepository.findAll();
-        System.out.println("animalsList"+animalsList);
-        System.out.println("animalRepository.findAll()"+animalRepository.findAll());
-        return animalRepository.findAll();
+        model.addAttribute("allPets", animalsList);
+        return "animals/allPets";
     }
 
-    @GetMapping("/searchPetByCategory/{category}")
-    public String searchPetByCategory(@PathVariable String category){
+    @GetMapping("/petProfile")
+    public String getRandomPetProfile() {
+        return "animals/petProfile";
+    }
+
+    @GetMapping(value = "/searchPetByCategory", params = {"category"})
+    public String getSearchPetByCategoryPage(@PathVariable String category){
+        System.out.println("in the searchPetByCategory function");
 //        List<Animals> animalsList = (List<Animals>) animalRepository.findByCategory(category);
 //        System.out.println("animalsList "+animalsList);
         System.out.println("animalRepository.findByCategory(category) "+animalRepository.findByCategory(category));
@@ -58,13 +78,13 @@ public class AnimalController {
 //        return "animals/allPets";
 //    }
 
-    @GetMapping("/animals/searchPet")
-    public String searchPet(){
+    @GetMapping("/searchPet")
+    public String getSearchPetPage(){
         return "animals/searchPet";
     }
 
-    @GetMapping("/animals/rehome")
-    public String rehomePetPage(){
+    @GetMapping("/rehome")
+    public String getRehomePetPage(){
         return "animals/rehome";
     }
 
@@ -101,12 +121,6 @@ public class AnimalController {
             System.out.print(e);
         }
         return animal;
-    }
-
-    @GetMapping("/index2")
-    String getTest(Model model) {
-        model.addAttribute("something", "this is coming from animal controller");
-        return "index1";
     }
 
     @GetMapping("/getAnimalDetails")

@@ -37,36 +37,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../public/index.html">
+                    <a class="nav-link" href="/users/loggedInUser">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="rehome.html">
+                    <a class="nav-link" href="/animals/rehome">
                         <i class="fas fa-house-user"></i> Re-home a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="searchPet.html">
+                    <a class="nav-link" href="/animals/searchPet">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="petProfile.html">
+                    <a class="nav-link" href="/users/userProfile">
                         <i class="fa fa-user"></i> Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out-alt"></i> Sign Out</a>
-                </li>
-
-                <!-- if user is not signed in -->
-                <li class="nav-item">
-                    <a class="nav-link" href=../users/login.html>
-                        <i class="fa fa-sign-in-alt"></i> Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../users/register.html">
-                        <i class="fa fa-user-plus"></i> Sign up</a>
+                    <a class="nav-link" href="/users/loggedOutUser">
+                        <i class="fa fa-user"></i> Log out</a>
                 </li>
             </ul>
         </div>
@@ -77,15 +66,12 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
-        <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="'Hello, ' + ${name} + '!'" />
     </div>
 </div>
 
 <div id="profile" class="container">
 
     <div class="row">
-        <!-- Right Side -->
         <div class="col-10 offset-1">
             <div class="row">
                 <div class="card col-12">
@@ -116,9 +102,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
 </body>

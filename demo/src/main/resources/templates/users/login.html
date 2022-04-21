@@ -11,11 +11,12 @@
 
     <title>Get Rexy - The home of the pets</title>
 
+
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../public/webPages/libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link href="../../public/webPages/static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="../../webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -31,7 +32,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-spring fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="../../public/index.html">
+        <a class="navbar-brand" href="index.html">
             <i class="fa fa-dog"></i>
             Get Rexy
         </a>
@@ -41,36 +42,20 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../public/index.html">
+                    <a class="nav-link" href="index.html">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
-
-                <!-- if user is signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href="../animals/rehome.html">
-                        <i class="fas fa-house-user"></i> Re-home a pet</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../animals/searchPet.html">
+                    <a class="nav-link" href="../templates/animals/searchPet.html">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../animals/petProfile.html">
-                        <i class="fa fa-user"></i> Account</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out-alt"></i> Sign Out</a>
-                </li>
-
-                <!-- if user is not signed in -->
-                <li class="nav-item">
-                    <a class="nav-link" href=login.html>
+                    <a class="nav-link" href="/users/login">
                         <i class="fa fa-sign-in-alt"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register.html">
+                    <a class="nav-link" href="/users/register">
                         <i class="fa fa-user-plus"></i> Sign up</a>
                 </li>
             </ul>
@@ -82,20 +67,20 @@
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="'Hello, ' + ${name} + '!'" />
+        <p th:text="'Hello, ' + ${name} + ' welcome back!'" />
     </div>
 </div>
 
 <div class="container">
 
     <!-- login -->
-    <form class="form-horizontal" role="form" method="POST" th:action="@{/login}">
+    <form class="form-horizontal" role="form" method="POST" th:action="checkLoginUser">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h2>Welcome! Please fill up these fields to login</h2>
                 <hr>
-                <div class="alert alert-danger" th:if="${param.error != null}">
+                <div class="alert alert-danger" th:if="${incorrectPasswordMsg != null}">
                     Invalid username and password.
                 </div>
                 <div class="alert alert-success" th:if="${param.logout != null}">

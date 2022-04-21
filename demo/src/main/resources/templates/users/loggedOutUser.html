@@ -1,12 +1,16 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
   <title>Get Rexy - The home of the pets</title>
+
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="../../webPages/libraries/bootstrap/css/bootstrap.min.css" />
@@ -19,6 +23,7 @@
 
   <!-- Font Awesome (for icons) -->
   <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -42,53 +47,40 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/animals/rehome.html">
-            <i class="fas fa-house-user"></i> Re-home a pet</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/animals/rehome">
-            <i class="fas fa-house-user"></i> Re-home a pet</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/animals/searchPet">
+          <a class="nav-link" href="../templates/animals/searchPet.html">
             <i class="fas fa-cat"></i> Adopt a pet</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/userProfile">
-            <i class="fa fa-user"></i> Account</a>
+          <a class="nav-link" href="/users/login">
+            <i class="fa fa-sign-in-alt"></i> Sign In</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/loggedOutUser">
-            <i class="fa fa-sign-out-alt"></i> Sign Out</a>
+          <a class="nav-link" href="/users/register">
+            <i class="fa fa-user-plus"></i> Sign up</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="jumbotron jumbotron-fluid">
+
+  <div class="jumbotron jumbotron-fluid">
     <div class="container" align="center">
       <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
       <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-      <a href="" class="btn btn-success" target="_blank"><i class="fa fa-paw"></i> Adopt a pet</a>
-      <a href="https://therealdanvega.teachable.com/p/spring-boot-2" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Re-home your pet</a>
+      <a href="/animals/searchPet" class="btn btn-success" target="_blank"><i class="fa fa-paw"></i> Adopt a pet</a>
+      <a href="/animals/rehome" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Re-home your pet</a>
     </div>
   </div>
-
 
   <div class="row">
-    <div class="col-8">
-      <div class="row">
-          <div class="card-body">
-            <h5 class="card-title" th:text="'Hello! ' + ${user.name}"></h5>
-            <p class="card-text" th:text="'Your user name is: ' + ${user.userName}"></h6>
-            <p class="card-text" th:text="'Your email address is: ' + ${user.email}"></p>
-            <p class="card-text" th:text="'Your phone number is: ' + ${user.phoneNumber}"></p>
-          </div>
-        </div>
-      </div>
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2>You have been logged out, see you next time!</h2>
+      <hr>
     </div>
+    <div class="col-md-3"></div>
   </div>
 
-  </body>
+</body>
 </html>

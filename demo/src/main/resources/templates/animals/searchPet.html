@@ -38,37 +38,25 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../public/index.html">
+                    <a class="nav-link" href="/users/loggedInUser">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
-
-                <!-- if user is signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href="rehome.html">
+                    <a class="nav-link" href="/animals/rehome">
                         <i class="fas fa-house-user"></i> Re-home a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="searchPet.html">
+                    <a class="nav-link" href="/animals/searchPet">
                         <i class="fas fa-cat"></i> Adopt a pet</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="petProfile.html">
+                    <a class="nav-link" href="/users/userProfile">
                         <i class="fa fa-user"></i> Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-sign-out-alt"></i> Sign Out</a>
-                </li>
-
-                <!-- if user is not signed in -->
-                <li class="nav-item">
-                    <a class="nav-link" href=../users/login.html>
-                        <i class="fa fa-sign-in-alt"></i> Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../users/register.html">
-                        <i class="fa fa-user-plus"></i> Sign up</a>
+                    <a class="nav-link" href="/users/loggedOutUser">
+                        <i class="fa fa-user"></i> Log out</a>
                 </li>
             </ul>
         </div>
@@ -86,7 +74,7 @@
 <div class="container">
 
     <!-- search a pet -->
-    <form class="form-horizontal" role="form" method="POST" th:action="searchPetByCategory">
+    <form class="form-horizontal" role="form" method="POST" th:action="animals/searchPetByCategory">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -102,15 +90,15 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <select type="petType" class="form-control" id="petType" required="required">
-                                <option value="" disabled selected>Please select your desired pet type</option>
-                                <option value="Cat"> Cat</option>
-                                <option value="Dog"> Dog</option>
-                                <option value="Fish"> Fish</option>
-                                <option value="Rabbit"> Rabbit</option>
-                                <option value="Mouse"> Mouse</option>
-                            </select>
-                            <small style="color:red;"></small>
+                        <select type="petType" class="form-control" id="petType" required="required" th:field="*{petType}>
+                            <option value="" disabled selected>Please select your desired pet type</option>
+                            <option value="Cat"> Cat</option>
+                            <option value="Dog"> Dog</option>
+                            <option value="Fish"> Fish</option>
+                            <option value="Rabbit"> Rabbit</option>
+                            <option value="Mouse"> Mouse</option>
+                        </select>
+                        <small style="color:red;"></small>
                     </div>
                 </div>
             </div>
