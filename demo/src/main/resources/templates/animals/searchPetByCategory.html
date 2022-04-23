@@ -75,7 +75,7 @@
         <div class="col-10 offset-1">
             <div class="row">
                 <div class="container">
-                    <h2>All of the available pets from the category you have selected:</h2>
+                    <h6 class="card-subtitle">All of the available pets from the category you have selected:</h6>
                     <table class="table">
                         <thead class="thead-dark">
                         <tr>
@@ -102,7 +102,7 @@
                     </table>
                 </div>
                 <div class="row">
-                    <p> Please enter the name of the pet you wish to get to know better</p>
+                    <p> Please enter the name of the pet you wish to get to know better  </p>
                     <form class="form-horizontal" role="form" th:action="@{/animals/getAnimalDetails}" th:object="${petName}">
                         <input type="text" th:name="petName"/>
                         <input type="submit"/>

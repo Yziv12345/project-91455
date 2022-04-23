@@ -26,8 +26,8 @@ public class DBConfig {
             animalsRepository.save(new Animals(2, "Lucky", LocalDate.now(), "Toad",1,"Amphibians", 2, 2, 13));
             animalsRepository.save(new Animals(3, "Sharky", LocalDate.now(), "Fish",1,"Fish", 3, 1, 0.200));
             animalsRepository.save(new Animals(4, "Ricko", LocalDate.now(), "Rats",1,"Rats", 4, 4, 1.5));
-            usersRepository.save(new Users(1, "Yossi", new ArrayList<>(1), "135", "YossiCohen"));
-            usersRepository.save(new Users(2, "Dov", new ArrayList<>(2), "246", "Navon"));
+            usersRepository.save(new Users(1, "Yossi", "1", "135", "YossiCohen", "yossi@gmail.com", "0542555333"));
+            usersRepository.save(new Users(2, "Dov", "2", "246", "Navon", "Dov@walla.com", "09-8994422"));
         };
     }
 

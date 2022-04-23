@@ -85,21 +85,18 @@
             </div>
             <div class="row">
                 <div class="card col-12">
-                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
                     <div class="card-body">
                         <h5 class="card-title" th:text="${pet.name}"></h5>
-                        <h6 class="card-subtitle mb-2 text-muted" th:text="${pet.id}"></h6>
-                        <p class="card-text" th:text="${pet.category}"></p>
-                        <p class="card-text" th:text="${pet.type}"></p>
-                        <p class="card-text" th:text="${pet.age}"></p>
-                        <p class="card-text" th:text="${pet.size}"></p>
-                        <p class="card-text" th:text="${pet.created_at}"></p>
-<!--                        <p class="card-text" th:text="${user.name}"></p>-->
-
-                        <p class="card-text"> Category: </p>
-                        <p class="card-text"> : </p>
-                        <p class="card-text"> Email: </p>
-                        <p class="card-text"> Phone: </p>
+                        <h6 class="card-subtitle mb-2 text-muted" th:text="'Pet ID number: '+${pet.id}"></h6>
+                        <p class="card-text" th:text="'Category: '+${pet.category}"></p>
+                        <p class="card-text" th:text="'Type: '+${pet.type}"></p>
+                        <p class="card-text" th:text="'Age: '+${pet.age}"></p>
+                        <p class="card-text" th:text="'Size: '+${pet.size}"></p>
+                        <p class="card-text" th:text="'First published by: '+${pet.created_at}"></p>
+                        <p class="card-text" th:text="'Owner name is: '+${user.name}"></p>
+                        <p class="card-text" th:text="'Owner user name is: '+${user.userName}"></p>
+                        <p class="card-text" th:text="'Owner Email is: '+${user.userEmail}"></p>
+                        <p class="card-text" th:text="'Owner Phone number is: '+${user.userPhoneNumber}"> : </p>
                     </div>
                 </div>
             </div>

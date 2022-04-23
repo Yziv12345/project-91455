@@ -13,21 +13,20 @@ import java.util.List;
 public class AnimalsServices implements IAnimalService {
 
     @Autowired
-    private AnimalsRepository repository;
+    private AnimalsRepository animalsRepository;
     @Override
     public List<Animals> findAll(){
-        var animals = (List<Animals>) repository.findAll();
+        var animals = (List<Animals>) animalsRepository.findAll();
         return animals;
     }
 
     public Animals findByCategory(String category){
-        var animals =  repository.findByCategory(category);
+        var animals =  animalsRepository.findByCategory(category);
         return animals;
     }
 
     public List<Animals> findByName(String name){
-        var animals = (List<Animals>) repository.findByName(name);
+        var animals = (List<Animals>) animalsRepository.findByName(name);
         return animals;
     }
-
 }

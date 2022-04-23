@@ -35,11 +35,8 @@ public class AnimalController {
 
     @GetMapping("/findAll")
     public String findAllPets(Model model) {
-
         List<Animals> animals = animalService.findAll();
-
         model.addAttribute("pets", animals);
-
     return "animals/allPets";
 
     }
@@ -112,8 +109,10 @@ public class AnimalController {
         System.out.println("petName is: "+petName);
         var animal = animalRepository.findByName(petName);
         var user = usersRepository.findById(animal.getOwner_id());
+        System.out.println("userName is: "+user.get());
+
         model.addAttribute("pet", animal);
-        model.addAttribute("user", user);
+        model.addAttribute("user", user.get());
         return "animals/petProfile";
     }
 //    @GetMapping("/getAnimalDetails")

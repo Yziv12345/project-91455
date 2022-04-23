@@ -24,7 +24,8 @@ public class UsersController {
     }
 
     @GetMapping("/users/register")
-    public String getRegisterUserPage(){
+    public String getRegisterUserPage(Model model){
+        model.addAttribute("users", new Users());
         return "users/register";
     }
 
@@ -66,19 +67,19 @@ public class UsersController {
 //        return newUser;
 //    }
     @PostMapping("/users/saveUser")
-    public ModelAndView save(@ModelAttribute User user) {
-        System.out.println("userName from UI = " + user);
+    public ModelAndView save(@RequestParam(value = "users") User user, Model model) {
+        System.out.println("userName from UI = " + user.getUserName());
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-//        Users newUser = new Users(rand_1, user.getName(), new ArrayList<>(), new ArrayList<>(), user.getUsername(), user.getPassword());
-//        try {
-//            usersRepository.save(newUser);
-//        } catch (Exception e) {
-//            System.out.print(e);
-//        }
+        Users newUser = new Users(rand_1, user.getName(), "", user.getPassword(), user.getUserName(), user.getEmail(), user.getPhoneNumber());
+        try {
+            usersRepository.save(newUser);
+        } catch (Exception e) {
+            System.out.print(e);
+        }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("users/loggedInUser");
-        modelAndView.addObject("user", user);
+        modelAndView.addObject("user", new Users());
         return modelAndView;
     }
 
