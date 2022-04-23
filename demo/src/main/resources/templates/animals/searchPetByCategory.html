@@ -67,47 +67,51 @@
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="'Hello, ' + ${name} + '!'" />
     </div>
 </div>
 
 <div id="profile" class="container">
-
     <div class="row">
-        <!-- Right Side -->
         <div class="col-10 offset-1">
             <div class="row">
-                <div class="card col-12">
-                    <img class="card-img-top" src="../../webPages/static/images/husky.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">
-                        </p>
-                        <a href="rehome.html"><button type="button" class="btn btn-primary btn-lg btn-block">Adopt me!</button></a>
-                    </div>
+                <div class="container">
+                    <h2>All of the available pets from the category you have selected:</h2>
+                    <table class="table">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Published at</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Category</th>
+                        </tr>
+                        </thead>
+                        <tr th:each="pet : ${pets}">
+                            <td th:text="${pet.id}">Id</td>
+                            <td th:text="${pet.name}">Name</td>
+                            <td th:text="${pet.age}">Age (Years)</td>
+                            <td th:text="${pet.size}">Size (Kilograms)</td>
+                            <td th:text="${pet.created_at}">Published at</td>
+                            <td th:text="${pet.type}">Type</td>
+                            <td th:text="${pet.status}">Status</td>
+                            <td th:text="${pet.category}">Category</td>
+                        </tr>
+                    </table>
                 </div>
-            </div>
-            <div class="row">
-                <div class="card col-12">
-                    <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-                    <div class="card-body">
-                        <h5 class="card-title"> ${name} Information</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">PetId:</h6>
-                        <p class="card-text">Age: 1 year</p>
-                        <p class="card-text">Type: Husky</p>
-                        <p class="card-text">First published in site: March 23, 2022</p>
-                        <p class="card-text">Status: ready to be adopted</p>
-                        <p class="card-text">Size: Medium </p>
-                        <p class="card-text"> Category: </p>
-                        <p class="card-text"> Owners Name: </p>
-                        <p class="card-text"> Email: </p>
-                        <p class="card-text"> Phone: </p>
-                    </div>
+                <div class="row">
+                    <p> Please enter the name of the pet you wish to get to know better</p>
+                    <form class="form-horizontal" role="form" th:action="@{/animals/getAnimalDetails}" th:object="${petName}">
+                        <input type="text" th:name="petName"/>
+                        <input type="submit"/>
+<!--                        <button type="submit" th:name="action" th:value="out">check-out</button>-->
+                    </form>
                 </div>
             </div>
         </div>
-
     </div>
-
 </div>
 
 </body>

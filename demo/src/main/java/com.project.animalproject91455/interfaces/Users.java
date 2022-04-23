@@ -16,9 +16,9 @@ public class Users {
     @Column(name="animals")
     @ElementCollection(targetClass=Integer.class)
     private List<Integer> animals;
-    @Column(name="actions")
-    @ElementCollection(targetClass=Integer.class)
-    private List<Integer> actions;
+//    @Column(name="actions")
+//    @ElementCollection(targetClass=Integer.class)
+//    private List<Integer> actions;
     @Column(name="password")
     private String password;
     @Column(name="user_name")
@@ -28,11 +28,11 @@ public class Users {
 
     }
 
-    public Users(Integer id, String name, List<Integer> animals, List<Integer> actions, String password, String username) {
+    public Users(Integer id, String name, List<Integer> animals, String password, String username) {
         this.id = id;
         this.name = name;
         this.animals = animals;
-        this.actions = actions;
+//        this.actions = actions;
         this.password = password;
         this.userName = username;
     }
@@ -61,13 +61,13 @@ public class Users {
         this.animals = animals;
     }
 
-    public List<Integer> getActions() {
-        return actions;
-    }
+//    public List<Integer> getActions() {
+//        return actions;
+//    }
 
-    public void setActions(List<Integer> actions) {
-        this.actions = actions;
-    }
+//    public void setActions(List<Integer> actions) {
+//        this.actions = actions;
+//    }
 
     public String getPassword() {
         return password;

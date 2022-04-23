@@ -67,14 +67,15 @@
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="${something}"}></p>
     </div>
 </div>
 
 <div class="container">
 
     <!-- search a pet -->
-    <form class="form-horizontal" role="form" method="POST" th:action="animals/searchPetByCategory">
+<!--    <form method="POST" th:action="@{/submit-link}" th:object="${link}">-->
+
+    <form class="form-horizontal" role="form" th:action="@{/animals/searchPetByCategory}" th:object="${category}">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
@@ -90,13 +91,12 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <select type="petType" class="form-control" id="petType" required="required" th:field="*{petType}>
+                        <select type="petType" class="form-control" id="petType" required="required" th:name="category">
                             <option value="" disabled selected>Please select your desired pet type</option>
-                            <option value="Cat"> Cat</option>
-                            <option value="Dog"> Dog</option>
+                            <option value="Mammals"> Mammals</option>
                             <option value="Fish"> Fish</option>
-                            <option value="Rabbit"> Rabbit</option>
-                            <option value="Mouse"> Mouse</option>
+                            <option value="Rats"> Rats</option>
+                            <option value="Amphibians"> Amphibians</option>
                         </select>
                         <small style="color:red;"></small>
                     </div>

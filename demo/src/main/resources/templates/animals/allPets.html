@@ -9,10 +9,10 @@
     <title>Get Rexy - The home of the pets</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../public/webPages/libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
     <!-- Custom styles for this template -->
-    <link href="../../public/webPages/static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="../../webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
@@ -70,23 +70,32 @@
     </div>
 </div>
 
-<div class="container">
-
-
-    <table>
-<!--        <tr th:each="pet : ${pets}">-->
-<!--            <td th:text="${pet}.name"> </td>-->
-<!--            <td th:text="${pet}.id"> </td>-->
-<!--            <td th:text="${pet}.age"> </td>-->
-<!--        </tr>-->
-    </table>
-    <h2>all pets down here</h2>
-
-    <h2 th:text="${pets}"></h2>
-    <p>
-        This is my test after seeing the video
-    </p>
-</div>
-
+    <div class="container">
+        <h2>All of the available pets down here</h2>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">Published at</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Category</th>
+                </tr>
+            </thead>
+            <tr th:each="pet : ${pets}">
+                <td th:text="${pet.id}">Id</td>
+                <td th:text="${pet.name}">Name</td>
+                <td th:text="${pet.age}">Age (Years)</td>
+                <td th:text="${pet.size}">Size (Kilograms)</td>
+                <td th:text="${pet.created_at}">Published at</td>
+                <td th:text="${pet.type}">Type</td>
+                <td th:text="${pet.status}">Status</td>
+                <td th:text="${pet.category}">Category</td>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>

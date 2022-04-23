@@ -9,18 +9,18 @@ public class User {
     private String email;
     private String phoneNumber;
     private List<Integer> animals;
-    private List<Integer> actions;
+//    private List<Integer> actions;
     private String password;
     private String userName;
 
 
-    public User(Integer id, String name, String email, String phoneNumber, List<Integer> animals, List<Integer> actions, String password, String username) {
+    public User(Integer id, String name, String email, String phoneNumber, List<Integer> animals, String password, String username) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.animals = animals;
-        this.actions = actions;
+//        this.actions = actions;
         this.password = password;
         this.userName = username;
 
@@ -64,13 +64,13 @@ public class User {
         this.animals = animals;
     }
 
-    public List<Integer> getActions() {
-        return actions;
-    }
-
-    public void setActions(List<Integer> actions) {
-        this.actions = actions;
-    }
+//    public List<Integer> getActions() {
+//        return actions;
+//    }
+//
+//    public void setActions(List<Integer> actions) {
+//        this.actions = actions;
+//    }
 
     public String getPassword() {
         return password;

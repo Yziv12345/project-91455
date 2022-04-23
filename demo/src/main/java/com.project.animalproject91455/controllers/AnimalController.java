@@ -1,9 +1,11 @@
 package com.project.animalproject91455.controllers;
 
+import com.project.animalproject91455.animal.Animal;
 import com.project.animalproject91455.interfaces.Animals;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.AnimalsRepository;
 import com.project.animalproject91455.repository.UsersRepository;
+import com.project.animalproject91455.services.IAnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,37 +25,28 @@ import java.util.Random;
 public class AnimalController {
 
     @Autowired
-    AnimalsRepository animalRepository;
+    private IAnimalService animalService;
 
     @Autowired
-    UsersRepository usersRepository;
+    private AnimalsRepository animalRepository;
+
+    @Autowired
+    private UsersRepository usersRepository;
 
     @GetMapping("/findAll")
-    public String findAll(Model model) {
-//        List<Animals> res = animalRepository.findAll();
-        model.addAttribute("pets",animalRepository.findAll());
-        return "animals/allPets";
+    public String findAllPets(Model model) {
+
+        List<Animals> animals = animalService.findAll();
+
+        model.addAttribute("pets", animals);
+
+    return "animals/allPets";
+
     }
-
-    @ModelAttribute("findAllList")
-    public List<Animals> findAllList() {
-        List<Animals> res = animalRepository.findAll();
-        System.out.println(res);
-        return res;
-    }
-
-
 
     public AnimalController(AnimalsRepository animalRepository, UsersRepository usersRepository) {
         this.animalRepository = animalRepository;
         this.usersRepository = usersRepository;
-    }
-
-    @GetMapping("/allPets")
-    public String getAll(Model model) {
-        List<Animals> animalsList = animalRepository.findAll();
-        model.addAttribute("allPets", animalsList);
-        return "animals/allPets";
     }
 
     @GetMapping("/petProfile")
@@ -61,26 +54,16 @@ public class AnimalController {
         return "animals/petProfile";
     }
 
-    @GetMapping(value = "/searchPetByCategory", params = {"category"})
-    public String getSearchPetByCategoryPage(@PathVariable String category){
-        System.out.println("in the searchPetByCategory function");
-//        List<Animals> animalsList = (List<Animals>) animalRepository.findByCategory(category);
-//        System.out.println("animalsList "+animalsList);
-        System.out.println("animalRepository.findByCategory(category) "+animalRepository.findByCategory(category));
-        animalRepository.findByCategory(category);
-        return "animals/searchPetByCategory";
-    }
-
-//    @GetMappingetMapping("/animals")
-//    public String getAll(Model model){
-//        model.addAttribute("pets", animalRepository.findAll());
-//        System.out.println("animalRepository.findAll(): " + animalRepository.findAll());
-//        return "animals/allPets";
-//    }
-
     @GetMapping("/searchPet")
     public String getSearchPetPage(){
         return "animals/searchPet";
+    }
+
+    @GetMapping(value = "/searchPetByCategory")
+    public String getSearchPetByCategoryPage(@RequestParam(value = "category") String category, Model model){
+        var animals = animalRepository.findByCategory(category);
+        model.addAttribute("pets", animals);
+        return "animals/searchPetByCategory";
     }
 
     @GetMapping("")
@@ -113,29 +96,38 @@ public class AnimalController {
 //        return animal;
 //    }
 
-    @GetMapping("/getByCategory")
-    public Animals getAnimalByCategory(@RequestParam String category) {
-        Animals animal = null;
-        try {
-            animal = animalRepository.findByCategory(category);
-        } catch (Exception e) {
-            System.out.print(e);
-        }
-        return animal;
-    }
+//    @GetMapping("/getByCategory")
+//    public Animals getAnimalByCategory(@RequestParam String category) {
+//        Animals animal = null;
+//        try {
+//            animal = animalRepository.findByCategory(category);
+//        } catch (Exception e) {
+//            System.out.print(e);
+//        }
+//        return animal;
+//    }
 
-    @GetMapping("/getAnimalDetails")
-    public Optional<Users> getAnimalDetails(@RequestParam String name) {
-        Animals animal = null;
-        Optional<Users> user = null;
-        try {
-            animal = animalRepository.findByName(name);
-            user = usersRepository.findById(animal.getOwner_id());
-
-        } catch (Exception e) {
-            System.out.print(e);
-        }
-        return user;
+    @GetMapping(value = "/getAnimalDetails")
+    public String getAnimalDetails(@RequestParam(value = "petName") String petName, Model model){
+        System.out.println("petName is: "+petName);
+        var animal = animalRepository.findByName(petName);
+        var user = usersRepository.findById(animal.getOwner_id());
+        model.addAttribute("pet", animal);
+        model.addAttribute("user", user);
+        return "animals/petProfile";
     }
+//    @GetMapping("/getAnimalDetails")
+//    public Optional<Users> getAnimalDetails(@RequestParam String name) {
+//        Animals animal = null;
+//        Optional<Users> user = null;
+//        try {
+//            animal = animalRepository.findByName(name);
+//            user = usersRepository.findById(animal.getOwner_id());
+//
+//        } catch (Exception e) {
+//            System.out.print(e);
+//        }
+//        return user;
+//    }
 }
 
