@@ -73,7 +73,7 @@ public class AnimalController {
         }
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 0, animal.getCategory(), 2, animal.getAge(), animal.getSize());
+        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 0, animal.getCategory(), 2, animal.getAge(), animal.getSize(), animal.getShort_description(), animal.getLong_description());
         try {
             animalRepository.save(newAnimal);
         } catch (Exception e) {

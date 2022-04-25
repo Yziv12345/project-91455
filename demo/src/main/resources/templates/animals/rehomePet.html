@@ -130,14 +130,14 @@
                            th:field="*{size}">
                     <small th:errors="*{size}" style="color:red;"></small>
                 </div>
-<!--                <div class="form-group">-->
-<!--                    <label for="description">Description</label>-->
-<!--                    <textarea class="form-control" id="shortDescription" rows="3" th:field="*{shortDescription}">Please add a short description here</textarea>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="description">Description</label>-->
-<!--                    <textarea class="form-control" id="longDescription" rows="3" th:field="*{shortDescription}">Please add a long description here</textarea>-->
-<!--                </div>-->
+                <div class="form-group">
+                    <label for="short_description">Short description</label>
+                    <textarea class="form-control" id="short_description" rows="3" th:field="*{short_description}">Please add a short description here</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="long_description">Long description</label>
+                    <textarea class="form-control" id="long_description" rows="3" th:field="*{long_description}">Please add a long description here</textarea>
+                </div>
                 <button type="submit" class="btn btn-primary">Re-home my pet <i class="fas fa-paw"></i></button>
             </form>
         </div>
