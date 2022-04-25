@@ -66,14 +66,26 @@ public class AnimalController {
         return "animals/searchPetByCategory";
     }
 
+    @GetMapping(value = "/getAnimal")
+    public String getSearchPetByCategoryPage(@RequestParam(value = "animal") String animal, @RequestParam(value = "customer") String customer, Model model){
+        var animals = animalRepository.findByName(animal);
+        var user = usersRepository.findByName(customer);
+        if(user.get(0).getAnimals_ids() == animal) {
+            model.addAttribute("pets", animals);
+            return "animals/getAnimal";
+        }
+        else
+            return "";
+    }
+
     @RequestMapping(value = "/addAnimalToData", method = RequestMethod.POST)
-    public ModelAndView addAnimalToData(@ModelAttribute("animals") Animals animal, BindingResult bindingResult) {
+    public ModelAndView addAnimalToData(@ModelAttribute("animals") Animals animal, @RequestParam(value = "customer") String customer, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             //errors handling
         }
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 0, animal.getCategory(), 2, animal.getAge(), animal.getSize());
+        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 0, animal.getCategory(), customer, animal.getAge(), animal.getSize());
         try {
             animalRepository.save(newAnimal);
         } catch (Exception e) {

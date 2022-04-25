@@ -29,7 +29,7 @@ public class Animals {
     @Column(name = "category", nullable = false)
     private String category;
     @Column(name = "owner_id", nullable = false)
-    private Integer owner_id;
+    private String owner_id;
     @Column(name = "age", nullable = false)
     private double age;
     @Column(name = "size", nullable = false)
@@ -47,7 +47,7 @@ public class Animals {
         this.size = 0;
     }
 
-    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, Integer owner_id, double age, double size) {
+    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, String owner_id, double age, double size) {
         this.id = id;
         this.name = name;
         this.created_at = created_at;
@@ -91,7 +91,7 @@ public class Animals {
         return id;
     }
 
-    public Integer getOwner_id() {return owner_id;}
+    public String getOwner_id() {return owner_id;}
 
     public void setId(Integer id) {
         this.id = id;

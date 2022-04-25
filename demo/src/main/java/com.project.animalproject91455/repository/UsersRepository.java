@@ -10,6 +10,6 @@ public interface UsersRepository extends JpaRepository<Users, Integer> {
 
     List<Users> findByName(String userName);
 
-    Optional<Users> findById(Integer owner_id);
+    Optional<Users> findById(String owner_id);
 }
 
