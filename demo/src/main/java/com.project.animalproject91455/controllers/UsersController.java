@@ -1,6 +1,5 @@
 package com.project.animalproject91455.controllers;
 
-
 import com.project.animalproject91455.customer.User;
 import com.project.animalproject91455.customer.UserLogin;
 import com.project.animalproject91455.interfaces.Users;
@@ -8,10 +7,10 @@ import com.project.animalproject91455.repository.UsersRepository;
 import com.project.animalproject91455.services.UsersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -26,6 +25,11 @@ public class UsersController {
         this.usersRepository = usersRepository;
     }
 
+    @GetMapping(value = "/index")
+    public String getHomePage(){
+        return "index";
+    }
+
     @GetMapping("/users/register")
     public String getRegisterUserPage(Model model){
         model.addAttribute("users", new Users());
@@ -38,10 +42,11 @@ public class UsersController {
         return "users/pleaseLogIn";
     }
 
-    @GetMapping("/users/login")
-    public String getLoginUserPage(Model model)
-    {   model.addAttribute("userLogin", new UserLogin());
-        return "users/login";
+    @RequestMapping(value = "/users/login", method = RequestMethod.GET)
+    public ModelAndView getLoginUserPage(Model model){
+        ModelAndView mav = new ModelAndView("users/login");
+        mav.addObject("userLogin", new UserLogin());
+        return mav;
     }
 
     @GetMapping("/users/userProfile")
@@ -59,45 +64,39 @@ public class UsersController {
         return "users/loggedOutUser";
     }
 
-    //    @PostMapping("/register")
-//    public Users registerUser(@RequestParam String name, @RequestParam String userName, @RequestParam String password) {
-//        Random ran = new Random();
-//        int rand_1 = ran.nextInt(6) + 5;
-//        Users newUser = new Users(rand_1, name, new ArrayList<>(), new ArrayList<>(), password, userName);
-//        try {
-//            return usersRepository.save(newUser);
-//        } catch (Exception e) {
-//            System.out.print(e);
-//        }
-//        return newUser;
-//    }
-    @PostMapping("/users/saveUser")
-    public ModelAndView save(@RequestParam(value = "users") User user, Model model) {
-        System.out.println("userName from UI = " + user.getUserName());
+    @RequestMapping(value ="/users/saveUser", method = RequestMethod.POST)
+    public ModelAndView saveUser(@ModelAttribute("users") Users user, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            //errors handling
+        }
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Users newUser = new Users(rand_1, user.getName(), "", user.getPassword(), user.getUserName(), user.getEmail(), user.getPhoneNumber());
+        Users newUser = new Users(rand_1, user.getName(), "0", user.getPassword(), user.getUserName(), user.getUserEmail(), user.getUserPhoneNumber());
         try {
             usersRepository.save(newUser);
         } catch (Exception e) {
             System.out.print(e);
         }
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("users/loggedInUser");
-        modelAndView.addObject("user", new Users());
-        return modelAndView;
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("users/loggedInUser");
+        mav.addObject("user", user);
+        return mav;
     }
 
-    @GetMapping("/users/checkLoginUser")
-    public String checkLoginUser(@RequestParam(value = "userLogin") UserLogin userLogin, Model model) {
-        model.addAttribute("userLogin", userLogin);
+    @RequestMapping(value = "/users/checkLoginUser", method = RequestMethod.POST)
+    public ModelAndView checkLoginUser(@ModelAttribute("userLogin") UserLogin userLogin, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            //errors handling
+        }
         if(userLogin.getEmail().equals("Dov@walla.com") && userLogin.getPassword().equals("246")){
-            model.addAttribute("loggedInMsg", "welcome back");
-            return "users/loggedInUser";
+            ModelAndView mav = new ModelAndView("users/loggedInUser");
+            mav.addObject("loggedInMsg", "welcome back");
+            return mav;
         }
         else{
-            model.addAttribute("incorrectPasswordMsg", "You have entered a wrong password");
-            return "users/login";
+            ModelAndView mav = new ModelAndView("users/login");
+            mav.addObject("incorrectPasswordMsg", "You have entered a wrong password");
+            return mav;
         }
     }
 

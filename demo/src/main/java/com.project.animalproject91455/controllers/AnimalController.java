@@ -7,12 +7,14 @@ import com.project.animalproject91455.repository.AnimalsRepository;
 import com.project.animalproject91455.repository.UsersRepository;
 import com.project.animalproject91455.services.IAnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -46,6 +48,12 @@ public class AnimalController {
         this.usersRepository = usersRepository;
     }
 
+    @GetMapping("/rehomePet")
+    public String getRegisterUserPage(Model model){
+        model.addAttribute("animals", new Animals());
+        return "animals/rehomePet";
+    }
+
     @GetMapping("/petProfile")
     public String getRandomPetProfile() {
         return "animals/petProfile";
@@ -69,17 +77,23 @@ public class AnimalController {
         return res;
     }
 
-    @PostMapping("/register")
-    public Animals registerAnimal(@RequestParam String name, @RequestParam String type, @RequestParam String category, @RequestParam Integer user_id, @RequestParam Integer age, @RequestParam Integer size) {
+    @RequestMapping(value = "/addAnimalToData", method = RequestMethod.POST)
+    public ModelAndView addAnimalToData(@ModelAttribute("animals") Animals animal, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            //errors handling
+        }
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Animals newAnimal = new Animals(rand_1, name, LocalDate.now(), type, 0, category, user_id, age, size);
+        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 0, animal.getCategory(), 2, animal.getAge(), animal.getSize());
         try {
-            return animalRepository.save(newAnimal);
+            animalRepository.save(newAnimal);
         } catch (Exception e) {
             System.out.print(e);
         }
-        return newAnimal;
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("animals/allPets");
+        mav.addObject("pets", animalService.findAll());
+        return mav;
     }
 
 //    @GetMapping("/animals")

@@ -31,9 +31,7 @@ public class Users {
     @Column(name="phone_number", nullable = false)
     private String userPhoneNumber;
 
-    public Users() {
-
-    }
+    public Users() {}
 
     public Users(Integer id, String name, String animals, String password, String username, String userEmail, String userPhoneNumber) {
         this.id = id;
@@ -65,7 +63,8 @@ public class Users {
         return this.animals_ids;
     }
 
-    public void setAnimals_ids(String animals) {this.animals_ids = animals;}
+    public void setAnimals_ids(String animals) {
+        this.animals_ids = animals;}
 
     public String getPassword() {
         return password;
@@ -96,8 +95,7 @@ public class Users {
     }
 
     public void setUserPhoneNumber(String userPhoneNumber) {
-        this.userName = userPhoneNumber;
+        this.userPhoneNumber = userPhoneNumber;
     }
-
 
 }

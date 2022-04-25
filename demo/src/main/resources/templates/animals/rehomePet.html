@@ -11,18 +11,13 @@
 
     <title>Get Rexy - The home of the pets</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="../../public/webPages/libraries/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../webPages/libraries/bootstrap/css/bootstrap.min.css" />
 
-    <!-- Custom styles for this template -->
-    <link href="../../public/webPages/static.webPages/css/springPage.css" rel="stylesheet">
+    <link href="../../webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
 
-    <!-- Font Awesome (for icons) -->
     <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -31,7 +26,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-spring fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="../../public/index.html">
+        <a class="navbar-brand" href="../index.html">
             <i class="fa fa-dog"></i>
             Get Rexy
         </a>
@@ -41,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="../../public/index.html">
+                    <a class="nav-link" href="../index.html">
                         <i class="fas fa-home"></i> Home
                     </a>
                 </li>
@@ -67,7 +62,7 @@
                 <!-- if user is not signed in -->
                 <li class="nav-item">
                     <a class="nav-link" href=../users/login.html>
-                        <i class="fa fa-sign-in-alt"></i> Sign In</a>
+                        <i class="fa fa-sign-in-alt"></i> Log In</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="../users/register.html">
@@ -82,7 +77,6 @@
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
         <p class="lead">Get Rexy is the place for pet owners who are seeking to re-home their pet, and for great humans who are seeking to add a new pet to their life.</p>
-        <p th:text="'Hello, ' + ${name} + '!'" />
     </div>
 </div>
 
@@ -93,7 +87,7 @@
             <h4>Re-home your pet</h4>
             <h5> Add your pet to our family</h5>
             <br/>
-            <form method="POST" th:action="@{/submit-link}" th:object="${link}">
+            <form method="POST" th:action="@{/animals/addAnimalToData}" th:object="${animals}">
                 <div class="form-group">
                     <label for="title">Pet's Name</label>
                     <input type="text"
@@ -101,8 +95,8 @@
                            id="title"
                            placeholder="Enter Title"
                            required="required"
-                           th:field="*{title}">
-                    <small th:errors="*{title}" style="color:red;"></small>
+                           th:field="*{name}">
+                    <small th:errors="*{name}" style="color:red;"></small>
                 </div>
                 <div class="form-group">
                     <label for="title">Age</label>
@@ -116,7 +110,7 @@
                 </div>
                 <div class="form-group">
                     <label for="title">Type</label>
-                    <select type="petSize" class="form-control" id="petType" placeholder="Pet size" required="required" th:field="*{petSize}">
+                    <select type="text" class="form-control" id="type" placeholder="Pet size" required="required" th:field="*{type}">
                         <option value="" disabled selected>Please select your pet type</option>
                         <option value="Cat"> Cat</option>
                         <option value="Dog"> Dog</option>
@@ -127,34 +121,40 @@
                     <small th:errors="*{type}" style="color:red;"></small>
                 </div>
                 <div class="form-group">
-                    <label for="petSize">What size is your pet?</label>
-                    <select type="petSize" class="form-control" id="petSize" placeholder="Pet size" required="required" th:field="*{petSize}">
-                        <option value="" disabled selected>Please select your pet size</option>
-                        <option value="Mini"> Mini</option>
-                        <option value="Small"> Small</option>
-                        <option value="Medium"> Medium</option>
-                        <option value="Large"> Large</option>
-                        <option value="Huge"> Huge</option>
+                    <label for="title">Type</label>
+                    <select type="text" class="form-control" id="category" placeholder="category" required="required" th:field="*{category}">
+                        <option value="" disabled selected>Please select your pet type</option>
+                        <option value="Mammals"> Mammals</option>
+                        <option value="Amphibians"> Amphibians</option>
+                        <option value="Fish"> Fish</option>
+                        <option value="Rats"> Rats</option>
                     </select>
-                        <small th:errors="*{petSize}" style="color:red;"></small>
+                    <small th:errors="*{category}" style="color:red;"></small>
                 </div>
                 <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="shortDescription" rows="3" th:field="*{shortDescription}">Please add a short description here</textarea>
+                    <label for="title">What size is your pet?</label>
+                    <input type="text"
+                           class="form-control"
+                           id="size"
+                           placeholder="Enter size in Kg"
+                           required="required"
+                           th:field="*{size}">
+                    <small th:errors="*{size}" style="color:red;"></small>
                 </div>
-                <div class="form-group">
-                    <label for="description">Description</label>
-                    <textarea class="form-control" id="longDescription" rows="3" th:field="*{shortDescription}">Please add a long description here</textarea>
-                </div>
+<!--                <div class="form-group">-->
+<!--                    <label for="description">Description</label>-->
+<!--                    <textarea class="form-control" id="shortDescription" rows="3" th:field="*{shortDescription}">Please add a short description here</textarea>-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="description">Description</label>-->
+<!--                    <textarea class="form-control" id="longDescription" rows="3" th:field="*{shortDescription}">Please add a long description here</textarea>-->
+<!--                </div>-->
                 <button type="submit" class="btn btn-primary">Re-home my pet <i class="fas fa-paw"></i></button>
             </form>
         </div>
         <div class="col-md-3"></div>
     </div>
 </div>
-
-<!-- Bootstrap core JavaScript -->
-
 
 </body>
 
