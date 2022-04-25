@@ -9,7 +9,6 @@ public class User {
     private String email;
     private String phoneNumber;
     private List<Integer> animals;
-//    private List<Integer> actions;
     private String password;
     private String userName;
 
@@ -20,7 +19,6 @@ public class User {
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.animals = animals;
-//        this.actions = actions;
         this.password = password;
         this.userName = username;
 

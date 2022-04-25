@@ -1,9 +1,5 @@
 package com.project.animalproject91455.config;
-
-
-import com.project.animalproject91455.animal.Animal;
 import com.project.animalproject91455.interfaces.Animals;
-import com.project.animalproject91455.interfaces.StatusType;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.AnimalsRepository;
 import com.project.animalproject91455.repository.UsersRepository;
@@ -13,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 @EnableMongoRepositories(basePackageClasses = AnimalsRepository.class)
 @Configuration

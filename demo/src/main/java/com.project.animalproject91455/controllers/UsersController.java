@@ -4,7 +4,6 @@ import com.project.animalproject91455.customer.User;
 import com.project.animalproject91455.customer.UserLogin;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.UsersRepository;
-import com.project.animalproject91455.services.UsersService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +18,6 @@ import java.util.Random;
 public class UsersController {
 
     private UsersRepository usersRepository;
-    private UsersService usersService;
 
     public UsersController(UsersRepository usersRepository) {
         this.usersRepository = usersRepository;
@@ -28,6 +26,11 @@ public class UsersController {
     @GetMapping(value = "/index")
     public String getHomePage(){
         return "index";
+    }
+
+    @GetMapping(value = "/home/homeSignedIn")
+    public String gethomeSignedIn(){
+        return "home/homeSignedIn";
     }
 
     @GetMapping("/users/register")
