@@ -1,6 +1,7 @@
 package com.project.animalproject91455.controllers;
 
 import com.project.animalproject91455.customer.UserLogin;
+import com.project.animalproject91455.interfaces.Animals;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.UsersRepository;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,16 @@ public class UsersController {
         return "home/homeNotSignedIn";
     }
 
+    @GetMapping("/users/userProfile")
+    public String getUserProfile(@ModelAttribute Users user, Model model){
+        return "users/userProfile";
+    }
+
+    @RequestMapping(value ="/users/loggedOutUser", method = RequestMethod.POST)
+    public String getLoggedOutUserPage(){
+        return "users/loggedOutUser";
+    }
+
     @GetMapping("/users/register")
     public String getRegisterUserPage(Model model){
         model.addAttribute("users", new Users());
@@ -54,21 +65,6 @@ public class UsersController {
         ModelAndView mav = new ModelAndView("users/login");
         mav.addObject("userLogin", new UserLogin());
         return mav;
-    }
-
-    @GetMapping("/users/userProfile")
-    public String getUserProfile(@ModelAttribute Users user, Model model){
-        return "users/userProfile";
-    }
-
-    @GetMapping("/users/loggedInUser")
-    public String getLoggedInUserPage(){
-        return "users/loggedInUser";
-    }
-
-    @GetMapping("/users/loggedOutUser")
-    public String getLoggedOutUserPage(){
-        return "users/loggedOutUser";
     }
 
     @RequestMapping(value ="/users/saveUser", method = RequestMethod.POST)
@@ -98,7 +94,7 @@ public class UsersController {
         Users user = usersRepository.findByUserEmail(userLogin.getEmail());
         if(user.getPassword().equals(userLogin.getPassword())){
             ModelAndView mav = new ModelAndView("users/loggedInUser");
-//            mav.addObject("user", )
+            mav.addObject("users", new Users());
             mav.addObject("loggedInMsg", "welcome back");
             return mav;
         }
@@ -107,6 +103,17 @@ public class UsersController {
             mav.addObject("incorrectPasswordMsg", "You have entered a wrong password");
             return mav;
         }
+    }
+
+    @RequestMapping("/users/loggedInUser")
+    public String getLoggedInUserPage(Model model, BindingResult bindingResult)
+    {
+        if(bindingResult.hasErrors()){
+            //errors handling
+        }
+        model.addAttribute("users", new Users());
+        model.addAttribute("animals", new Animals());
+        return "users/loggedInUser";
     }
 
     @GetMapping("/login")

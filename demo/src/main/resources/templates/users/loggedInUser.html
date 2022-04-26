@@ -75,7 +75,16 @@
                     <h2>Hello and welcome back, it is great to have you here again!</h2>
                     <a href="/animals/searchPet" class="btn btn-success" target="_blank"><i class="fa fa-paw"></i> Adopt a pet</a>
                     <a href="/animals/rehomePet" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Re-home your pet</a>
-                    <a href="/animals/petProfile" class="btn btn-success" target="_blank"><i class="fas fa-home"></i> Random pet profile</a>
+                    <form class="form-horizontal" role="form" th:action="@{/animals/userAllPets}" th:object="${users}" method="POST">
+                        <div class="row" style="padding-top: 1rem">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input type="text" th:field="*{name}" class="form-control" id="email" placeholder="Fill your name" required autofocus>
+                                <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Show me all my pets </button>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </form>
                     <hr>
                 </div>
             </div>

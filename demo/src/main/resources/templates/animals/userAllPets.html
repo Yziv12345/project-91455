@@ -13,9 +13,7 @@
 
     <link href="../../webPages/static.webPages/css/springPage.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
-
 
     <script src="https://kit.fontawesome.com/e19d49ea63.js" crossorigin="anonymous"></script>
 
@@ -61,7 +59,6 @@
     </div>
 </nav>
 
-
 <div class="jumbotron jumbotron-fluid">
     <div class="container" align="center">
         <h2 class="display-4">Get Rexy - The home of adoption and rehome pets</h2>
@@ -69,49 +66,63 @@
     </div>
 </div>
 
-<div id="profile" class="container">
-    <div class="row">
-        <div class="col-10 offset-1">
-            <div class="row">
-                <div class="container">
-                    <h6 class="card-subtitle">All of the available pets from the category you have selected:</h6>
-                    <table class="table">
-                        <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Size</th>
-                            <th scope="col">Published at</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Category</th>
-                        </tr>
-                        </thead>
-                        <tr th:each="pet : ${pets}">
-                            <td th:text="${pet.id}">Id</td>
-                            <td th:text="${pet.name}">Name</td>
-                            <td th:text="${pet.age}">Age (Years)</td>
-                            <td th:text="${pet.size}">Size (Kilograms)</td>
-                            <td th:text="${pet.created_at}">Published at</td>
-                            <td th:text="${pet.type}">Type</td>
-                            <td th:text="${pet.status}">Status</td>
-                            <td th:text="${pet.category}">Category</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="row">
-                    <p> Please enter the name of the pet you wish to get to know better  </p>
-                    <form class="form-horizontal" role="form" th:action="@{/animals/getAnimalDetails}" th:object="${petName}">
-                        <input type="text" th:name="petName"/>
-                        <input type="submit"/>
-                    </form>
+<div class="container">
+    <h2>Here are all of your pets:</h2>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Size</th>
+            <th scope="col">Published at</th>
+            <th scope="col">Type</th>
+            <th scope="col">Status</th>
+            <th scope="col">Category</th>
+        </tr>
+        </thead>
+        <tr th:each="pet : ${pets}">
+            <td th:text="${pet.id}">Id</td>
+            <td th:text="${pet.name}">Name</td>
+            <td th:text="${pet.age}">Age (Years)</td>
+            <td th:text="${pet.size}">Size (Kilograms)</td>
+            <td th:text="${pet.created_at}">Published at</td>
+            <td th:text="${pet.type}">Type</td>
+            <td th:text="${pet.status}">Status</td>
+            <td th:text="${pet.category}">Category</td>
+        </tr>
+    </table>
+    <form class="form-horizontal" role="form" th:action="@{/animals/removePet}" th:object="${animals}" method="POST">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Do you want to remove one of your pets?</h2>
+                <hr>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group has-danger">
+                    <label class="sr-only" for="name">Pet name</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Your pet name" required autofocus>
+                    </div>
                 </div>
             </div>
+            <div class="col-md-3"></div>
         </div>
-    </div>
+        <div class="row" style="padding-top: 1rem">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Remove </button>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </form>
+
 </div>
-
 </body>
-
 </html>

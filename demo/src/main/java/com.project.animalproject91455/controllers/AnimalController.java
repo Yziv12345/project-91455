@@ -1,6 +1,7 @@
 package com.project.animalproject91455.controllers;
 
 import com.project.animalproject91455.interfaces.Animals;
+import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.AnimalsRepository;
 import com.project.animalproject91455.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ public class AnimalController {
         return "animals/searchPet";
     }
 
+    @GetMapping("/rehomePet")
+    public String getRegisterUserPage(Model model){
+        model.addAttribute("animals", new Animals());
+        return "animals/rehomePet";
+    }
+
     @GetMapping("/findAll")
     public String findAllPets(Model model) {
         List<Animals> animals = animalRepository.findAll();
@@ -53,10 +60,28 @@ public class AnimalController {
         return "animals/allPets";
     }
 
-    @GetMapping("/rehomePet")
-    public String getRegisterUserPage(Model model){
-        model.addAttribute("animals", new Animals());
-        return "animals/rehomePet";
+    @RequestMapping(value = "/userAllPets", method = RequestMethod.POST)
+    public ModelAndView userAllPets(@ModelAttribute("users") Users users, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            //errors handling
+        }
+        ModelAndView mav = new ModelAndView("/animals/userAllPets");
+//        mav.addObject("users", new Users());
+        List<Animals> allPets = animalRepository.getAnimalsByOwner(users.getName());
+        mav.addObject("animals", new Animals());
+        mav.addObject("pets", allPets);
+        return mav;
+    }
+
+    @RequestMapping(value="/removePet", method = RequestMethod.POST)
+    public ModelAndView removePetFromData(@ModelAttribute("animals") Animals animals, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            //errors handling
+        }
+        animalRepository.removeByName(animals.getName());
+        ModelAndView mav = new ModelAndView("users/loggedInUser");
+        mav.addObject("users", new Users());
+        return mav;
     }
 
     @GetMapping(value = "/searchPetByCategory")
