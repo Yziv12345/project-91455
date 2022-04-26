@@ -73,7 +73,7 @@ public class AnimalController {
         }
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 0, animal.getCategory(), 2, animal.getAge(), animal.getSize(), animal.getShort_description(), animal.getLong_description());
+        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 1, animal.getCategory(), animal.getOwner_id(), animal.getAge(), animal.getSize(), animal.getShort_description(), animal.getLong_description(), animal.getPic_location());
         try {
             animalRepository.save(newAnimal);
         } catch (Exception e) {
@@ -85,30 +85,6 @@ public class AnimalController {
         return mav;
     }
 
-
-
-//    @GetMapping("/animals")
-//    public Animals getAnimal(@RequestParam String name) {
-//        Animals animal = null;
-//        try {
-//            animal = animalRepository.findByName(name);
-//        } catch (Exception e) {
-//            System.out.print(e);
-//        }
-//        return animal;
-//    }
-
-//    @GetMapping("/getByCategory")
-//    public Animals getAnimalByCategory(@RequestParam String category) {
-//        Animals animal = null;
-//        try {
-//            animal = animalRepository.findByCategory(category);
-//        } catch (Exception e) {
-//            System.out.print(e);
-//        }
-//        return animal;
-//    }
-
     @GetMapping(value = "/getAnimalDetails")
     public String getAnimalDetails(@RequestParam(value = "petName") String petName, Model model){
         var animal = animalRepository.findByName(petName);
@@ -117,18 +93,5 @@ public class AnimalController {
         model.addAttribute("user", user.get());
         return "animals/petProfile";
     }
-//    @GetMapping("/getAnimalDetails")
-//    public Optional<Users> getAnimalDetails(@RequestParam String name) {
-//        Animals animal = null;
-//        Optional<Users> user = null;
-//        try {
-//            animal = animalRepository.findByName(name);
-//            user = usersRepository.findById(animal.getOwner_id());
-//
-//        } catch (Exception e) {
-//            System.out.print(e);
-//        }
-//        return user;
-//    }
 }
 

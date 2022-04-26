@@ -29,7 +29,7 @@ public class Animals {
     @Column(name = "category", nullable = false)
     private String category;
     @Column(name = "owner_id", nullable = false)
-    private Integer owner_id;
+    private String owner_id;
     @Column(name = "age", nullable = false)
     private double age;
     @Column(name = "size", nullable = false)
@@ -38,6 +38,10 @@ public class Animals {
     private String short_description;
     @Column(name = "long_description", nullable = false)
     private String long_description;
+    @Column(name = "pic_location", nullable = false)
+    private String pic_location;
+
+
 
     public Animals() {
         this.id = null;
@@ -53,7 +57,7 @@ public class Animals {
         this.long_description = null;
     }
 
-    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, Integer owner_id, double age, double size, String short_description, String long_description) {
+    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, String owner_id, double age, double size, String short_description, String long_description, String pic_location) {
         this.id = id;
         this.name = name;
         this.created_at = created_at;
@@ -65,6 +69,7 @@ public class Animals {
         this.size = size;
         this.short_description = short_description;
         this.long_description = long_description;
+        this.pic_location = pic_location;
     }
 
     public String getName() {
@@ -91,8 +96,7 @@ public class Animals {
     public Integer getId() {
         return id;
     }
-    public Integer getOwner_id() {return owner_id;}
-
+    public String getOwner_id() {return owner_id;}
     public void setId(Integer id) {
         this.id = id;
     }
@@ -107,5 +111,11 @@ public class Animals {
     }
     public void setLong_description(String long_description) {
         this.long_description = long_description;
+    }
+    public String getPic_location() {
+        return pic_location;
+    }
+    public void setPic_location(String pic_location) {
+        this.pic_location = pic_location;
     }
 }

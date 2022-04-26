@@ -33,6 +33,11 @@ public class UsersController {
         return "home/homeSignedIn";
     }
 
+    @GetMapping(value = "/home/homeNotSignedIn")
+    public String getHomeNotSignedIn(){
+        return "home/homeNotSignedIn";
+    }
+
     @GetMapping("/users/register")
     public String getRegisterUserPage(Model model){
         model.addAttribute("users", new Users());

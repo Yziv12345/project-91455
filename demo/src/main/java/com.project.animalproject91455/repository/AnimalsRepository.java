@@ -9,7 +9,7 @@ public interface AnimalsRepository extends JpaRepository<Animals, Integer> {
 
     List<Animals> findAll();
     Animals findByName(String name);
-    Animals findByCategory(String category);
+    List<Animals> findByCategory(String category);
 
 }
 

@@ -138,6 +138,20 @@
                     <label for="long_description">Long description</label>
                     <textarea class="form-control" id="long_description" rows="3" th:field="*{long_description}">Please add a long description here</textarea>
                 </div>
+                <div>
+                    <label for="pic_location">Please upload a photo ot your pet</label>
+                    <input type="text" id="pic_location" name="pic_location" th:field="*{pic_location}" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="title">Please enter your name</label>
+                    <input type="text"
+                           class="form-control"
+                           id="owner_id"
+                           placeholder="Enter Title"
+                           required="required"
+                           th:field="*{owner_id}">
+                    <small th:errors="*{owner_id}" style="color:red;"></small>
+                </div>
                 <button type="submit" class="btn btn-primary">Re-home my pet <i class="fas fa-paw"></i></button>
             </form>
         </div>
