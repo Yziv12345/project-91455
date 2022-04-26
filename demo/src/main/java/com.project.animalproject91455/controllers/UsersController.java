@@ -40,6 +40,8 @@ public class UsersController {
 
     @GetMapping("/users/userProfile")
     public String getUserProfile(@ModelAttribute Users user, Model model){
+
+        model.addAttribute("user", user);
         return "users/userProfile";
     }
 

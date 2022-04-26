@@ -31,11 +31,6 @@ public class AnimalController {
         this.animalRepository = animalRepository;
         this.usersRepository = usersRepository;
     }
-    @GetMapping("/index")
-    public List<Animals> getAll() {
-        List<Animals> res = animalRepository.findAll();
-        return res;
-    }
 
     @GetMapping("/petProfile")
     public String getRandomPetProfile() {
