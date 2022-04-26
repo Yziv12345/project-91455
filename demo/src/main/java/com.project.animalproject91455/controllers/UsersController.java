@@ -1,6 +1,5 @@
 package com.project.animalproject91455.controllers;
 
-import com.project.animalproject91455.customer.User;
 import com.project.animalproject91455.customer.UserLogin;
 import com.project.animalproject91455.interfaces.Users;
 import com.project.animalproject91455.repository.UsersRepository;
@@ -58,7 +57,7 @@ public class UsersController {
     }
 
     @GetMapping("/users/userProfile")
-    public String getUserProfile(@ModelAttribute User user, Model model){
+    public String getUserProfile(@ModelAttribute Users user, Model model){
         return "users/userProfile";
     }
 
@@ -96,8 +95,10 @@ public class UsersController {
         if(bindingResult.hasErrors()){
             //errors handling
         }
-        if(userLogin.getEmail().equals("Dov@walla.com") && userLogin.getPassword().equals("246")){
+        Users user = usersRepository.findByUserEmail(userLogin.getEmail());
+        if(user.getPassword().equals(userLogin.getPassword())){
             ModelAndView mav = new ModelAndView("users/loggedInUser");
+//            mav.addObject("user", )
             mav.addObject("loggedInMsg", "welcome back");
             return mav;
         }

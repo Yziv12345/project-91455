@@ -73,7 +73,7 @@ public class AnimalController {
         }
         Random ran = new Random();
         int rand_1 = ran.nextInt(6) + 5;
-        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 1, animal.getCategory(), animal.getOwner_id(), animal.getAge(), animal.getSize(), animal.getShort_description(), animal.getLong_description(), animal.getPic_location());
+        Animals newAnimal = new Animals(rand_1, animal.getName(), LocalDate.now(), animal.getType(), 1, animal.getCategory(), animal.getOwner(), animal.getAge(), animal.getSize(), animal.getShort_description(), animal.getLong_description(), animal.getPic_location());
         try {
             animalRepository.save(newAnimal);
         } catch (Exception e) {
@@ -88,9 +88,9 @@ public class AnimalController {
     @GetMapping(value = "/getAnimalDetails")
     public String getAnimalDetails(@RequestParam(value = "petName") String petName, Model model){
         var animal = animalRepository.findByName(petName);
-        var user = usersRepository.findById(animal.getOwner_id());
+        var user = usersRepository.findByName(animal.getOwner());
         model.addAttribute("pet", animal);
-        model.addAttribute("user", user.get());
+        model.addAttribute("user", user.get(0));
         return "animals/petProfile";
     }
 }

@@ -146,11 +146,11 @@
                     <label for="title">Please enter your name</label>
                     <input type="text"
                            class="form-control"
-                           id="owner_id"
+                           id="owner"
                            placeholder="Enter Title"
                            required="required"
-                           th:field="*{owner_id}">
-                    <small th:errors="*{owner_id}" style="color:red;"></small>
+                           th:field="*{owner}">
+                    <small th:errors="*{owner}" style="color:red;"></small>
                 </div>
                 <button type="submit" class="btn btn-primary">Re-home my pet <i class="fas fa-paw"></i></button>
             </form>

@@ -28,8 +28,8 @@ public class Animals {
     private int status;
     @Column(name = "category", nullable = false)
     private String category;
-    @Column(name = "owner_id", nullable = false)
-    private String owner_id;
+    @Column(name = "owner")
+    private String owner;
     @Column(name = "age", nullable = false)
     private double age;
     @Column(name = "size", nullable = false)
@@ -50,21 +50,21 @@ public class Animals {
         this.type = null;
         this.status = 0;
         this.category = null;
-        this.owner_id = null;
+        this.owner = null;
         this.age = 0;
         this.size = 0;
         this.short_description = null;
         this.long_description = null;
     }
 
-    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, String owner_id, double age, double size, String short_description, String long_description, String pic_location) {
+    public Animals(Integer id, String name, LocalDate created_at, String type, int status, String category, String owner, double age, double size, String short_description, String long_description, String pic_location) {
         this.id = id;
         this.name = name;
         this.created_at = created_at;
         this.type = type;
         this.status = status;
         this.category = category;
-        this.owner_id = owner_id;
+        this.owner = owner;
         this.age = age;
         this.size = size;
         this.short_description = short_description;
@@ -96,7 +96,7 @@ public class Animals {
     public Integer getId() {
         return id;
     }
-    public String getOwner_id() {return owner_id;}
+    public String getOwner() {return owner;}
     public void setId(Integer id) {
         this.id = id;
     }
